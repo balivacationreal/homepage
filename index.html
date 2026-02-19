@@ -251,6 +251,115 @@
                 padding: 0 20px 40px;
             }
         }
+        /* Video Highlight Section */
+        .video-highlight {
+            background-color: #fff;
+            padding: 80px 50px;
+        }
+
+        .video-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .video-text {
+            flex: 1;
+        }
+
+        .video-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .video-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .video-wrapper {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 40px 50px 80px;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .reviewer h4 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .reviewer span {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Responsive Updates */
+        @media(max-width: 992px) {
+            .video-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .video-highlight, .testimonials {
+                padding: 40px 20px;
+            }
+            .video-text h2 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -322,7 +431,61 @@
         </div>
 
     </div>
+<section class="video-highlight">
+        <div class="video-container">
+            <div class="video-text">
+                <h2>Experience the Island Vibe</h2>
+                <p>Get a glimpse of the crystal-clear waters, towering cliffs, and vibrant marine life that await you on our tours. Watch our highlights and start imagining your next adventure.</p>
+                <a href="#packages" class="btn">Find Your Tour</a>
+            </div>
+            <div class="video-wrapper">
+                <video controls poster="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
 
+    <section class="testimonials" id="reviews">
+        <h2 class="section-title">What Our Travelers Say</h2>
+        <div class="testimonials-container">
+            
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Absolutely incredible experience! The team took care of everything from the fast boat to the snorkeling gear. Swimming with the mantas was a dream come true."</p>
+                <div class="reviewer">
+                    <h4>Sarah Jenkins</h4>
+                    <span>Australia</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Our family trip was flawless. The driver was so friendly and knew all the best photo spots at Kelingking beach before the massive crowds arrived. Highly recommend!"</p>
+                <div class="reviewer">
+                    <h4>Budi Santoso</h4>
+                    <span>Jakarta, Indonesia</span>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p class="review-text">"Very professional agency. The communication via WhatsApp was instant, and the East Nusa Penida tour was breathtaking. Great value for the price!"</p>
+                <div class="reviewer">
+                    <h4>Liam O'Connor</h4>
+                    <span>United Kingdom</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
     <footer id="contact">
         <h2>Bali Real Vacation</h2>
         <p>Your trusted travel partner in Bali & Nusa Penida.</p>
