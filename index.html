@@ -360,6 +360,104 @@
                 font-size: 2rem;
             }
         }
+        /* About Us Section */
+        .about-section {
+            padding: 80px 50px;
+            background-color: #fff;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: cover;
+            min-height: 400px;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 20px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .about-features li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .about-features li i {
+            color: #25D366; /* Green checkmark */
+            margin-right: 10px;
+        }
+
+        /* Responsive Updates for About Section */
+        @media(max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            .experience-badge {
+                right: 20px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .about-section {
+                padding: 40px 20px;
+            }
+            .about-content h3 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -381,7 +479,30 @@
         <p>Premium travel itineraries and unforgettable experiences for domestic and foreign tourists.</p>
         <a href="#packages" class="btn">Explore Packages</a>
     </section>
-
+<section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=800&q=80" alt="Bali Real Vacation Team">
+                <div class="experience-badge">
+                    <span>Authentic</span>
+                    <span>Experiences</span>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left; margin-top: 0;">Who We Are</h2>
+                <h3>More Than Just a Tour – It's a Real Vacation</h3>
+                <p>Welcome to <strong>Bali Real Vacation</strong>. We specialize in crafting premium, hassle-free travel itineraries across Bali and Nusa Penida for both domestic and international visitors.</p>
+                <p>We know firsthand that planning a trip for a large group—balancing the energy of teenagers with the comfort needed for parents, aunts, and uncles—can be overwhelming. That is why our team handles every detail, from fast boat tickets to experienced local drivers, ensuring a seamless journey whether you are traveling with your extended family, a partner, or solo.</p>
+                <p>Beyond providing unforgettable adventures, we are deeply committed to the islands we showcase. We advocate for sustainable, eco-conscious tourism to protect our beautiful marine life and raise awareness about critical local environments, such as the delicate coral reefs in North Bali. When you explore with us, you are supporting a vision that respects and preserves the true beauty of Indonesia.</p>
+                
+                <ul class="about-features">
+                    <li><i class="fa-solid fa-check-circle"></i> Seamless Family & Group Coordination</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Eco-Conscious Travel Practices</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Transparent Pricing & No Hidden Fees</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
     <div class="packages-container">
         
