@@ -458,6 +458,81 @@
                 font-size: 1.5rem;
             }
         }
+        /* Crew Section */
+        .crew-section {
+            padding: 60px 50px 80px;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .crew-intro {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .crew-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .crew-card {
+            background: #fff;
+            width: 320px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .crew-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .crew-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .crew-info {
+            padding: 25px;
+        }
+
+        .crew-info h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .crew-role {
+            display: block;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .crew-info p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .crew-section {
+                padding: 40px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -503,55 +578,44 @@
             </div>
         </div>
     </section>
-    <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
-    <div class="packages-container">
+    <section class="crew-section" id="crew">
+        <h2 class="section-title">Meet Your Local Guides</h2>
+        <p class="crew-intro">Our experienced and friendly drivers are here to ensure your journey is safe, fun, and unforgettable.</p>
         
-        <div class="package-card">
-            <img src="src/assets/perfect-view-kelingking-beach-nusa-penida-island-indonesia.webp" alt="West Nusa Penida" class="package-img">
-            <div class="package-content">
-                <h3 class="package-title">West Nusa Penida Tour</h3>
-                <p class="package-price">From Rp 550.000 / Pax</p>
-                <ul class="package-details">
-                    <li><i class="fa-solid fa-location-dot"></i> Kelingking Beach</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Broken Beach</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Angel's Billabong</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Crystal Bay</li>
-                </ul>
-                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+        <div class="crew-container">
+            
+            <div class="crew-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="Ketut Widiasa" class="crew-img">
+                <div class="crew-info">
+                    <h3>Ketut Widiasa</h3>
+                    <span class="crew-role">Senior Driver & Guide</span>
+                    <p>Hailing from Buleleng, North Bali, Ketut is a highly experienced driver. He is well-spoken, humorous, and keeps his vehicle impeccably clean. Always responsive and responsible on the road.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="package-card">
-            <img src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80" alt="East Nusa Penida" class="package-img">
-            <div class="package-content">
-                <h3 class="package-title">East Nusa Penida Tour</h3>
-                <p class="package-price">From Rp 600.000 / Pax</p>
-                <ul class="package-details">
-                    <li><i class="fa-solid fa-location-dot"></i> Diamond Beach</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Atuh Beach</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Tree House (Molenteng)</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Thousand Islands Viewpoint</li>
-                </ul>
-                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+            <div class="crew-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Gede Jahendra" class="crew-img">
+                <div class="crew-info">
+                    <h3>Gede Jahendra</h3>
+                    <span class="crew-role">Local Expert</span>
+                    <p>Born and raised in Nusa Penida, Gede possesses deep knowledge about the hidden gems of Bali. He is known by our clients for being incredibly honest, reliable, and responsible.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="package-card">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Snorkeling Nusa Penida" class="package-img">
-            <div class="package-content">
-                <h3 class="package-title">Nusa Penida Snorkeling</h3>
-                <p class="package-price">From Rp 750.000 / Pax</p>
-                <ul class="package-details">
-                    <li><i class="fa-solid fa-water"></i> Manta Bay</li>
-                    <li><i class="fa-solid fa-water"></i> Gamat Bay</li>
-                    <li><i class="fa-solid fa-water"></i> Wall Point</li>
-                    <li><i class="fa-solid fa-water"></i> Crystal Bay</li>
-                </ul>
-                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+            <div class="crew-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Ketut Suartawan" class="crew-img">
+                <div class="crew-info">
+                    <h3>Ketut Suartawan</h3>
+                    <span class="crew-role">Guide & Photographer</span>
+                    <p>A true Nusa Penida local, Ketut is kind and honest. Beyond guiding, he is an excellent photographer who will make sure you capture the perfect moments during any adventure.</p>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    </section>
+    <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
+    <div class="packages-container" id="packages-list">
+        </div>
 <section class="video-highlight">
         <div class="video-container">
             <div class="video-text">
@@ -626,6 +690,80 @@
             <i class="fa-brands fa-whatsapp"></i>
         </a>
     </div>
+<script>
+        // Data structure for your tour packages
+        const tourPackages = [
+            {
+                id: 'west-nusa-penida',
+                title: 'West Nusa Penida Tour',
+                price: 'Rp 550.000',
+                unit: '/ Pax',
+                image: 'https://balivacationreal.github.io/homepage/src/assets/perfect-view-kelingking-beach-nusa-penida-island-indonesia.webp',
+                itinerary: ['Kelingking Beach', 'Broken Beach', "Angel's Billabong", 'Crystal Bay'],
+                icon: 'fa-location-dot',
+                bookingUrl: 'https://wa.me/6281239156586'
+            },
+            {
+                id: 'east-nusa-penida',
+                title: 'East Nusa Penida Tour',
+                price: 'Rp 600.000',
+                unit: '/ Pax',
+                image: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80',
+                itinerary: ['Diamond Beach', 'Atuh Beach', 'Tree House (Molenteng)', 'Thousand Islands Viewpoint'],
+                icon: 'fa-location-dot',
+                bookingUrl: 'https://wa.me/6281239156586'
+            },
+            {
+                id: 'snorkeling-nusa-penida',
+                title: 'Nusa Penida Snorkeling',
+                price: 'Rp 750.000',
+                unit: '/ Pax',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
+                itinerary: ['Manta Bay', 'Gamat Bay', 'Wall Point', 'Crystal Bay'],
+                icon: 'fa-water', // Note: Using the wave icon for water activities
+                bookingUrl: 'https://wa.me/6281239156586'
+            }
+        ];
 
+        // Function to generate the HTML for the packages
+        function renderTourPackages() {
+            // Find the container where we want to put the cards
+            const container = document.getElementById('packages-list');
+            
+            // Make sure the container is empty before we start adding to it
+            container.innerHTML = '';
+
+            // Loop through each package in the array
+            tourPackages.forEach(pkg => {
+                
+                // First, create the list items for the itinerary
+                // We map through the itinerary array and join them into a single string of HTML
+                const itineraryHTML = pkg.itinerary.map(item => 
+                    `<li><i class="fa-solid ${pkg.icon}"></i> ${item}</li>`
+                ).join('');
+
+                // Next, build the full HTML structure for the card
+                const cardHTML = `
+                    <div class="package-card">
+                        <img src="${pkg.image}" alt="${pkg.title}" class="package-img">
+                        <div class="package-content">
+                            <h3 class="package-title">${pkg.title}</h3>
+                            <p class="package-price">From ${pkg.price} ${pkg.unit}</p>
+                            <ul class="package-details">
+                                ${itineraryHTML}
+                            </ul>
+                            <a href="${pkg.bookingUrl}" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                        </div>
+                    </div>
+                `;
+                
+                // Finally, add this new card into the container on the page
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        // Run the function as soon as the page loads
+        document.addEventListener('DOMContentLoaded', renderTourPackages);
+    </script>
 </body>
 </html>
