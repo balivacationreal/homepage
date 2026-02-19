@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bali Real Vacation | Bali & Nusa Penida Tours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #007BFF;
+            --secondary-color: #FF9800;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e68a00;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Packages Section */
+        .packages-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 50px 60px;
+        }
+
+        .package-card {
+            background: #fff;
+            width: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 20px;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .package-price {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .package-details {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .package-details li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .package-details li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Floating Buttons (WhatsApp & Telegram) */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-btn {
+            background-color: #25D366;
+        }
+
+        .tg-btn {
+            background-color: #0088cc;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .packages-container {
+                padding: 0 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Bali Real Vacation</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#packages">Tour Packages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Discover the Magic of Bali & Nusa Penida</h1>
+        <p>Premium travel itineraries and unforgettable experiences for domestic and foreign tourists.</p>
+        <a href="#packages" class="btn">Explore Packages</a>
+    </section>
+
+    <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
+    <div class="packages-container">
+        
+        <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1588631202868-242e88a31e84?auto=format&fit=crop&w=800&q=80" alt="West Nusa Penida" class="package-img">
+            <div class="package-content">
+                <h3 class="package-title">West Nusa Penida Tour</h3>
+                <p class="package-price">From Rp 550.000 / Pax</p>
+                <ul class="package-details">
+                    <li><i class="fa-solid fa-location-dot"></i> Kelingking Beach</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Broken Beach</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Angel's Billabong</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Crystal Bay</li>
+                </ul>
+                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+            </div>
+        </div>
+
+        <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=800&q=80" alt="East Nusa Penida" class="package-img">
+            <div class="package-content">
+                <h3 class="package-title">East Nusa Penida Tour</h3>
+                <p class="package-price">From Rp 600.000 / Pax</p>
+                <ul class="package-details">
+                    <li><i class="fa-solid fa-location-dot"></i> Diamond Beach</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Atuh Beach</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Tree House (Molenteng)</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Thousand Islands Viewpoint</li>
+                </ul>
+                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+            </div>
+        </div>
+
+        <div class="package-card">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Snorkeling Nusa Penida" class="package-img">
+            <div class="package-content">
+                <h3 class="package-title">Nusa Penida Snorkeling</h3>
+                <p class="package-price">From Rp 750.000 / Pax</p>
+                <ul class="package-details">
+                    <li><i class="fa-solid fa-water"></i> Manta Bay</li>
+                    <li><i class="fa-solid fa-water"></i> Gamat Bay</li>
+                    <li><i class="fa-solid fa-water"></i> Wall Point</li>
+                    <li><i class="fa-solid fa-water"></i> Crystal Bay</li>
+                </ul>
+                <a href="https://wa.me/6281239156586" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="contact">
+        <h2>Bali Real Vacation</h2>
+        <p>Your trusted travel partner in Bali & Nusa Penida.</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/balirealvacation" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        
+        <p>&copy; 2026 Bali Real Vacation. All Rights Reserved.</p>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://t.me/+6281239156586" class="float-btn tg-btn" target="_blank" title="Contact us on Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="https://wa.me/6281239156586" class="float-btn wa-btn" target="_blank" title="Contact us on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+</body>
+</html>
