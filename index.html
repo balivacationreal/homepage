@@ -46,17 +46,29 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            gap: 12px; /* This creates the perfect space between your image and text */
         }
 
         .logo img {
-            height: 50px; /* You can increase or decrease this to make the logo bigger or smaller */
+            height: 50px; 
             width: auto;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
 
         .logo img:hover {
-            transform: scale(1.05); /* Adds a nice little pop when visitors hover over it */
+            transform: scale(1.05); 
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover .logo-text {
+            color: var(--secondary-color); /* Makes the text change color when hovered */
         }
 
         nav ul {
@@ -550,6 +562,7 @@
     <header>
         <a href="#" class="logo">
     <img src="src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
+    <span class="logo-text">Bali Real Vacation</span>
 </a>
         <nav>
             <ul>
