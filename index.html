@@ -640,6 +640,84 @@
             .slide-caption { font-size: 0.9rem; bottom: 20px; }
             .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
         }
+        /* Booking Form Section */
+        .booking-section {
+            padding: 60px 50px 80px;
+            background-color: #fff;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 15px;
+        }
+        /* Responsive Form */
+        @media(max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .booking-section {
+                padding: 40px 20px;
+            }
+            .booking-container {
+                padding: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -819,6 +897,55 @@
 
         </div>
     </section>
+    <section class="booking-section" id="book-now">
+        <h2 class="section-title">Book Your Adventure</h2>
+        <div class="booking-container">
+            <form class="booking-form" action="#" method="POST">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" placeholder="+62..." required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="package">Select Tour Package</label>
+                        <select id="package" required>
+                            <option value="" disabled selected>Choose a tour...</option>
+                            <option value="West Nusa Penida">West Nusa Penida Tour</option>
+                            <option value="East Nusa Penida">East Nusa Penida Tour</option>
+                            <option value="Nusa Penida Snorkeling">Nusa Penida Snorkeling</option>
+                            <option value="Lombok Highlight">Lombok Highlight Tour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Travel Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pax">Number of People</label>
+                        <input type="number" id="pax" min="1" placeholder="How many pax?" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Special Requests / Notes</label>
+                    <textarea id="message" rows="4" placeholder="Any dietary requirements or specific pickup locations?"></textarea>
+                </div>
+
+                <button type="submit" class="btn submit-btn">Request Booking</button>
+            </form>
+        </div>
+    </section>
     <footer id="contact">
         <h2>Bali Real Vacation</h2>
         <p>Your trusted travel partner in Bali & Nusa Penida.</p>
@@ -870,6 +997,16 @@
                 itinerary: ['Manta Bay', 'Gamat Bay', 'Wall Point', 'Crystal Bay'],
                 icon: 'fa-water', // Note: Using the wave icon for water activities
                 bookingUrl: 'https://wa.me/6281239156586'
+            },
+            {
+                id: 'lombok-highlight',
+                title: 'Lombok Highlight Tour',
+                price: 'Rp 1.200.000',
+                unit: '/ Pax',
+                image: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80', // Swap with your GitHub image later
+                itinerary: ['Gili Trawangan', 'Sendang Gile Waterfall', 'Sade Traditional Village', 'Mandalika Beach'],
+                icon: 'fa-map-location-dot',
+                bookingUrl: 'https://wa.me/6281239156586'
             }
         ];
 
@@ -912,6 +1049,54 @@
 
         // Run the function as soon as the page loads
         document.addEventListener('DOMContentLoaded', renderTourPackages);
+
+    // WhatsApp Booking Form Integration
+        document.addEventListener('DOMContentLoaded', () => {
+            // First, render the tour packages (from the previous step)
+            renderTourPackages();
+
+            // Next, set up the booking form interceptor
+            const bookingForm = document.querySelector('.booking-form');
+            
+            if(bookingForm) {
+                bookingForm.addEventListener('submit', function(event) {
+                    // Prevent the page from refreshing when the button is clicked
+                    event.preventDefault();
+
+                    // 1. Gather all the data from the form fields
+                    const name = document.getElementById('name').value;
+                    const whatsapp = document.getElementById('whatsapp').value;
+                    const tourPackage = document.getElementById('package').value;
+                    const date = document.getElementById('date').value;
+                    const pax = document.getElementById('pax').value;
+                    const message = document.getElementById('message').value;
+
+                    // 2. Format the message for WhatsApp (using * bolds the text in WA)
+                    let waMessage = `*New Booking Request - Bali Real Vacation* 🌴\n\n`;
+                    waMessage += `*Name:* ${name}\n`;
+                    waMessage += `*WhatsApp:* ${whatsapp}\n`;
+                    waMessage += `*Package:* ${tourPackage}\n`;
+                    waMessage += `*Date:* ${date}\n`;
+                    waMessage += `*Number of Pax:* ${pax}\n`;
+                    
+                    if (message) {
+                        waMessage += `*Special Notes:* ${message}\n`;
+                    }
+
+                    // 3. Your target WhatsApp number (include country code, no + or spaces)
+                    const targetNumber = '6281239156586';
+
+                    // 4. Encode the message so it works safely in a web URL
+                    const encodedMessage = encodeURIComponent(waMessage);
+
+                    // 5. Build the final wa.me link
+                    const waLink = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
+
+                    // 6. Open WhatsApp in a new tab!
+                    window.open(waLink, '_blank');
+                });
+            }
+        });
     // Gallery Carousel Logic
         document.addEventListener('DOMContentLoaded', () => {
             const track = document.getElementById('track');
