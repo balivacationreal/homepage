@@ -732,6 +732,55 @@
                 padding: 25px;
             }
         }
+       /* Tour Tiered Pricing Styles */
+        .tour-pricing {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .price-list li {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 4px;
+        }
+
+        .price-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .price-list strong {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .idr-price {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .per-pax-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 10px;
+            text-align: center;
+            font-style: italic;
+        }
         /* Footer Legal Links */
         .footer-legal {
             margin-bottom: 20px;
@@ -983,6 +1032,7 @@
             </form>
         </div>
     </section>
+    
     <footer id="contact">
         <h2>Bali Real Vacation</h2>
         <p>Your trusted travel partner in Bali & Nusa Penida.</p>
@@ -1008,14 +1058,17 @@
             <i class="fa-brands fa-whatsapp"></i>
         </a>
     </div>
-<script>
-        // Data structure for your tour packages
+    <script>
+        // 1. Upgraded Data Structure with Tiered Pricing
         const tourPackages = [
             {
                 id: 'west-nusa-penida',
                 title: 'West Nusa Penida Tour',
-                price: 'Rp 550.000',
-                unit: '/ Pax',
+                pricing: [
+                    { label: 'Group of 2', usd: 65, defaultIdr: '1.090.000' },
+                    { label: 'Group of 3', usd: 55, defaultIdr: '920.000' },
+                    { label: 'Group of 4+', usd: 49, defaultIdr: '820.000' }
+                ],
                 image: 'https://balivacationreal.github.io/homepage/src/assets/perfect-view-kelingking-beach.webp',
                 itinerary: ['Kelingking Beach', 'Broken Beach', "Angel's Billabong", 'Crystal Bay'],
                 icon: 'fa-location-dot',
@@ -1024,8 +1077,11 @@
             {
                 id: 'east-nusa-penida',
                 title: 'East Nusa Penida Tour',
-                price: 'Rp 600.000',
-                unit: '/ Pax',
+                pricing: [
+                    { label: 'Group of 2', usd: 69, defaultIdr: '1.150.000' },
+                    { label: 'Group of 3', usd: 59, defaultIdr: '990.000' },
+                    { label: 'Group of 4+', usd: 55, defaultIdr: '920.000' }
+                ],
                 image: 'https://balivacationreal.github.io/homepage/src/assets/diamond-beach-nusa-penida.webp',
                 itinerary: ['Diamond Beach', 'Atuh Beach', 'Tree House (Molenteng)', 'Thousand Islands Viewpoint'],
                 icon: 'fa-location-dot',
@@ -1034,49 +1090,53 @@
             {
                 id: 'snorkeling-nusa-penida',
                 title: 'Nusa Penida Snorkeling',
-                price: 'Rp 750.000',
-                unit: '/ Pax',
+                pricing: [
+                    { label: 'Group of 2', usd: 79, defaultIdr: '1.320.000' },
+                    { label: 'Group of 3', usd: 75, defaultIdr: '1.250.000' },
+                    { label: 'Group of 4+', usd: 69, defaultIdr: '1.150.000' }
+                ],
                 image: 'https://balivacationreal.github.io/homepage/src/assets/snorkeling-manta-point.webp',
                 itinerary: ['Manta Bay', 'Gamat Bay', 'Wall Point', 'Crystal Bay'],
-                icon: 'fa-water', // Note: Using the wave icon for water activities
+                icon: 'fa-water',
                 bookingUrl: 'https://wa.me/6281239156586'
             },
             {
                 id: 'lombok-highlight',
                 title: 'Lombok Highlight Tour',
-                price: 'Rp 1.200.000',
-                unit: '/ Pax',
-                image: 'https://balivacationreal.github.io/homepage/src/assets/mount-rinjani-climb.webp', // Swap with your GitHub image later
+                pricing: [
+                    { label: 'Base Price', usd: 75, defaultIdr: '1.200.000' } // Kept this one simple!
+                ],
+                image: 'https://balivacationreal.github.io/homepage/src/assets/mount-rinjani-climb.webp',
                 itinerary: ['Gili Trawangan', 'Sendang Gile Waterfall', 'Sade Traditional Village', 'Mandalika Beach'],
                 icon: 'fa-map-location-dot',
                 bookingUrl: 'https://wa.me/6281239156586'
             }
         ];
 
-        // Function to generate the HTML for the packages
-        function renderTourPackages() {
-            // Find the container where we want to put the cards
+        // 2. Render HTML & Fetch Live Currency
+        async function initializeTours() {
             const container = document.getElementById('packages-list');
-            
-            // Make sure the container is empty before we start adding to it
             container.innerHTML = '';
 
-            // Loop through each package in the array
+            // Generate HTML for each package
             tourPackages.forEach(pkg => {
-                
-                // First, create the list items for the itinerary
-                // We map through the itinerary array and join them into a single string of HTML
                 const itineraryHTML = pkg.itinerary.map(item => 
                     `<li><i class="fa-solid ${pkg.icon}"></i> ${item}</li>`
                 ).join('');
 
-                // Next, build the full HTML structure for the card
+                // Build the dynamic pricing list
+                let priceHTML = '<div class="tour-pricing"><ul class="price-list">';
+                pkg.pricing.forEach(tier => {
+                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| Rp ${tier.defaultIdr}</span></li>`;
+                });
+                priceHTML += '</ul><p class="per-pax-note">* Prices are per person</p></div>';
+
                 const cardHTML = `
                     <div class="package-card">
                         <img src="${pkg.image}" alt="${pkg.title}" class="package-img">
                         <div class="package-content">
                             <h3 class="package-title">${pkg.title}</h3>
-                            <p class="package-price">From ${pkg.price} ${pkg.unit}</p>
+                            ${priceHTML}
                             <ul class="package-details">
                                 ${itineraryHTML}
                             </ul>
@@ -1084,29 +1144,44 @@
                         </div>
                     </div>
                 `;
-                
-                // Finally, add this new card into the container on the page
                 container.innerHTML += cardHTML;
             });
+
+            // Fetch Live Exchange Rate and Update the DOM
+            try {
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                const idrRate = data.rates.IDR;
+
+                document.querySelectorAll('.idr-price').forEach(el => {
+                    const usdValue = parseFloat(el.getAttribute('data-usd'));
+                    const exactIdr = usdValue * idrRate;
+                    const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
+                    
+                    const formattedIdr = new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0
+                    }).format(cleanIdr);
+
+                    el.textContent = `| ${formattedIdr}`;
+                });
+            } catch (error) {
+                console.error('Could not fetch live exchange rates. Using default static prices.', error);
+            }
         }
 
-        // Run the function as soon as the page loads
-        document.addEventListener('DOMContentLoaded', renderTourPackages);
-
-    // WhatsApp Booking Form Integration
+        // 3. Main Initialization Block
         document.addEventListener('DOMContentLoaded', () => {
-            // First, render the tour packages (from the previous step)
-            renderTourPackages();
+            // Render tours and trigger currency fetch
+            initializeTours();
 
-            // Next, set up the booking form interceptor
+            // WhatsApp Booking Form Integration
             const bookingForm = document.querySelector('.booking-form');
-            
             if(bookingForm) {
                 bookingForm.addEventListener('submit', function(event) {
-                    // Prevent the page from refreshing when the button is clicked
                     event.preventDefault();
-
-                    // 1. Gather all the data from the form fields
                     const name = document.getElementById('name').value;
                     const whatsapp = document.getElementById('whatsapp').value;
                     const tourPackage = document.getElementById('package').value;
@@ -1114,67 +1189,43 @@
                     const pax = document.getElementById('pax').value;
                     const message = document.getElementById('message').value;
 
-                    // 2. Format the message for WhatsApp (using * bolds the text in WA)
                     let waMessage = `*New Booking Request - Bali Real Vacation* 🌴\n\n`;
-                    waMessage += `*Name:* ${name}\n`;
-                    waMessage += `*WhatsApp:* ${whatsapp}\n`;
-                    waMessage += `*Package:* ${tourPackage}\n`;
-                    waMessage += `*Date:* ${date}\n`;
-                    waMessage += `*Number of Pax:* ${pax}\n`;
-                    
-                    if (message) {
-                        waMessage += `*Special Notes:* ${message}\n`;
-                    }
+                    waMessage += `*Name:* ${name}\n*WhatsApp:* ${whatsapp}\n*Package:* ${tourPackage}\n*Date:* ${date}\n*Number of Pax:* ${pax}\n`;
+                    if (message) waMessage += `*Special Notes:* ${message}\n`;
 
-                    // 3. Your target WhatsApp number (include country code, no + or spaces)
                     const targetNumber = '6281239156586';
-
-                    // 4. Encode the message so it works safely in a web URL
                     const encodedMessage = encodeURIComponent(waMessage);
-
-                    // 5. Build the final wa.me link
-                    const waLink = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
-
-                    // 6. Open WhatsApp in a new tab!
-                    window.open(waLink, '_blank');
+                    window.open(`https://wa.me/${targetNumber}?text=${encodedMessage}`, '_blank');
                 });
             }
-        });
-    // Gallery Carousel Logic
-        document.addEventListener('DOMContentLoaded', () => {
+
+            // Gallery Carousel Logic
             const track = document.getElementById('track');
-            const slides = Array.from(track.children);
-            const nextButton = document.getElementById('nextBtn');
-            const prevButton = document.getElementById('prevBtn');
-            
-            let currentIndex = 0;
+            if(track) {
+                const slides = Array.from(track.children);
+                const nextButton = document.getElementById('nextBtn');
+                const prevButton = document.getElementById('prevBtn');
+                let currentIndex = 0;
 
-            function updateCarousel() {
-                // Calculate how much to move the track based on the current index
-                const amountToMove = slides[currentIndex].getBoundingClientRect().width;
-                track.style.transform = `translateX(-${currentIndex * amountToMove}px)`;
+                function updateCarousel() {
+                    if (slides.length > 0) {
+                        const amountToMove = slides[currentIndex].getBoundingClientRect().width;
+                        track.style.transform = `translateX(-${currentIndex * amountToMove}px)`;
+                    }
+                }
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                    updateCarousel();
+                });
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                    updateCarousel();
+                });
+
+                window.addEventListener('resize', updateCarousel);
             }
-
-            nextButton.addEventListener('click', () => {
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0; // Loop back to the first image
-                }
-                updateCarousel();
-            });
-
-            prevButton.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = slides.length - 1; // Loop to the last image
-                }
-                updateCarousel();
-            });
-
-            // Update sizing if the user resizes their browser window
-            window.addEventListener('resize', updateCarousel);
         });
     </script>
 </body>
