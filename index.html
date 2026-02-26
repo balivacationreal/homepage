@@ -43,7 +43,7 @@
             color: var(--text-dark);
             line-height: 1.6;
         }
-
+        
         /* Navbar */
         header {
             background-color: #fff;
@@ -102,7 +102,20 @@
         nav ul li a:hover {
             color: var(--secondary-color);
         }
+        /* Mobile Menu Button Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
 
+        .mobile-menu-btn:hover {
+            color: var(--secondary-color);
+        }
         /* Hero Section */
         .hero {
             height: 80vh;
@@ -270,17 +283,43 @@
             background-color: #0088cc;
         }
 
-        /* Responsive Design */
+        /* Responsive Design Updates */
         @media(max-width: 768px) {
             header {
-                flex-direction: column;
-                padding: 15px;
+                padding: 15px 20px;
+                /* Keeps logo and button on the same line */
+                flex-direction: row; 
+                position: relative;
             }
+            
+            .mobile-menu-btn {
+                display: block; /* Shows the hamburger on mobile */
+            }
+
+            #navMenu {
+                display: none; /* Hides the menu by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            /* This class is toggled by JavaScript to show the menu */
+            #navMenu.active {
+                display: block;
+            }
+
             nav ul {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                margin: 0;
             }
+            
+            /* Add this to keep the hero section text sized correctly */
             .hero h1 {
                 font-size: 2rem;
             }
@@ -808,10 +847,15 @@
 
     <header>
         <a href="#" class="logo">
-    <img src="https://balivacationreal.github.io/homepage/src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
-    <span class="logo-text">Bali Real Vacation</span>
-</a>
-        <nav>
+            <img src="https://balivacationreal.github.io/homepage/src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
+            <span class="logo-text">Bali Real Vacation</span>
+        </a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
@@ -1060,7 +1104,7 @@
         </a>
     </div>
     <script>
-        // 1. Upgraded Data Structure with Tiered Pricing & Dedicated Links
+// 1. Upgraded Data Structure with Tiered Pricing & Dedicated Links
         const tourPackages = [
             {
                 id: 'west-nusa-penida',
@@ -1114,7 +1158,7 @@
             }
         ];
 
-        // 2. Render HTML & Fetch Live Currency
+// 2. Render HTML & Fetch Live Currency
         async function initializeTours() {
             const container = document.getElementById('packages-list');
             container.innerHTML = '';
@@ -1173,12 +1217,12 @@
             }
         }
 
-        // 3. Main Initialization Block
+// 3. Main Initialization Block
         document.addEventListener('DOMContentLoaded', () => {
             // Render tours and trigger currency fetch
             initializeTours();
 
-            // WhatsApp Booking Form Integration
+// WhatsApp Booking Form Integration
             const bookingForm = document.querySelector('.booking-form');
             if(bookingForm) {
                 bookingForm.addEventListener('submit', function(event) {
@@ -1199,7 +1243,37 @@
                     window.open(`https://wa.me/${targetNumber}?text=${encodedMessage}`, '_blank');
                 });
             }
+// Mobile Hamburger Menu Logic
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('#navMenu ul li a');
 
+            if (mobileMenuBtn && navMenu) {
+                // Toggle the menu when the hamburger is clicked
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    
+                    // Swap the icon between hamburger bars and an 'X'
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+// Automatically close the menu when a link is clicked
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
             // Gallery Carousel Logic
             const track = document.getElementById('track');
             if(track) {
