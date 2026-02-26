@@ -1060,7 +1060,7 @@
         </a>
     </div>
     <script>
-        // 1. Upgraded Data Structure with Tiered Pricing
+        // 1. Upgraded Data Structure with Tiered Pricing & Dedicated Links
         const tourPackages = [
             {
                 id: 'west-nusa-penida',
@@ -1070,10 +1070,10 @@
                     { label: 'Group of 3', usd: 55, defaultIdr: '920.000' },
                     { label: 'Group of 4+', usd: 49, defaultIdr: '820.000' }
                 ],
-                image: 'https://balivacationreal.github.io/homepage/src/assets/perfect-view-kelingking-beach.webp',
+                image: 'src/assets/perfect-view-kelingking-beach.webp',
                 itinerary: ['Kelingking Beach', 'Broken Beach', "Angel's Billabong", 'Crystal Bay'],
                 icon: 'fa-location-dot',
-                bookingUrl: 'https://wa.me/6281239156586'
+                detailsUrl: '/west-nusa-penida.html' // Points to the new page!
             },
             {
                 id: 'east-nusa-penida',
@@ -1083,10 +1083,10 @@
                     { label: 'Group of 3', usd: 59, defaultIdr: '990.000' },
                     { label: 'Group of 4+', usd: 55, defaultIdr: '920.000' }
                 ],
-                image: 'https://balivacationreal.github.io/homepage/src/assets/diamond-beach-nusa-penida.webp',
+                image: 'src/assets/diamond-beach-nusa-penida.webp',
                 itinerary: ['Diamond Beach', 'Atuh Beach', 'Tree House (Molenteng)', 'Thousand Islands Viewpoint'],
                 icon: 'fa-location-dot',
-                bookingUrl: 'https://wa.me/6281239156586'
+                detailsUrl: '/east-nusa-penida.html' // Points to the new page!
             },
             {
                 id: 'snorkeling-nusa-penida',
@@ -1096,21 +1096,21 @@
                     { label: 'Group of 3', usd: 75, defaultIdr: '1.250.000' },
                     { label: 'Group of 4+', usd: 69, defaultIdr: '1.150.000' }
                 ],
-                image: 'https://balivacationreal.github.io/homepage/src/assets/snorkeling-manta-point.webp',
+                image: 'src/assets/snorkeling-manta-point.webp',
                 itinerary: ['Manta Bay', 'Gamat Bay', 'Wall Point', 'Crystal Bay'],
                 icon: 'fa-water',
-                bookingUrl: 'https://wa.me/6281239156586'
+                detailsUrl: '/nusa-penida-snorkeling.html' // Points to the new page!
             },
             {
                 id: 'lombok-highlight',
                 title: 'Lombok Highlight Tour',
                 pricing: [
-                    { label: 'Base Price', usd: 75, defaultIdr: '1.200.000' } // Kept this one simple!
+                    { label: 'Base Price', usd: 75, defaultIdr: '1.200.000' }
                 ],
-                image: 'https://balivacationreal.github.io/homepage/src/assets/mount-rinjani-climb.webp',
+                image: 'src/assets/mount-rinjani-climb.webp',
                 itinerary: ['Gili Trawangan', 'Sendang Gile Waterfall', 'Sade Traditional Village', 'Mandalika Beach'],
                 icon: 'fa-map-location-dot',
-                bookingUrl: 'https://wa.me/6281239156586'
+                detailsUrl: '#book-now' // Scrolls to the booking form since it doesn't have a dedicated page yet
             }
         ];
 
@@ -1141,7 +1141,7 @@
                             <ul class="package-details">
                                 ${itineraryHTML}
                             </ul>
-                            <a href="${pkg.bookingUrl}" class="btn" style="display: block; text-align: center; margin-top: 15px;">Book Now</a>
+                            <a href="${pkg.detailsUrl}" class="btn" style="display: block; text-align: center; margin-top: 15px;">View Full Details</a>
                         </div>
                     </div>
                 `;
