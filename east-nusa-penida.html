@@ -84,6 +84,55 @@
 
         /* Responsive */
         @media(max-width: 992px) { .tour-page-wrapper { flex-direction: column; } .tour-sidebar { width: 100%; position: static; } }
+        /* Mobile Menu Button Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Header Updates */
+        @media(max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: row; 
+                position: relative;
+            }
+            
+            .mobile-menu-btn {
+                display: block; 
+            }
+
+            #navMenu {
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            #navMenu.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +142,12 @@
             <img src="src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
             <span class="logo-text">Bali Real Vacation</span>
         </a>
-        <nav>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/#packages">All Packages</a></li>
@@ -171,6 +225,34 @@
                 });
             } catch (error) {
                 console.error('Exchange rate fetch failed. Using default prices.', error);
+            }
+            // Mobile Hamburger Menu Logic
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('#navMenu ul li a');
+
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    });
+                });
             }
         });
     </script>
