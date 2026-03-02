@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="The Ultimate Guide to Nusa Penida | Bali Real Vacation">
+    <meta name="description" content="Discover the pristine beaches, iconic cliffs, and underwater wonders of Nusa Penida. Your complete travel guide to exploring Bali's breathtaking neighbor.">
+
+    <title>The Ultimate Guide to Nusa Penida | Bali Real Vacation</title>
+    <link rel="icon" type="image/webp" href="src/assets/favicon-bali-real.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Inherited Base Styles from Main Site */
+        :root {
+            --primary-color: #007BFF;
+            --secondary-color: #FF9800;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 50px; 
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05); 
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover .logo-text {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Standard Buttons */
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #e68a00;
+        }
+
+        /* Blog Specific Styles */
+        .blog-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://balivacationreal.github.io/homepage/src/assets/kelingking-beach-nusa-penida.webp') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            max-width: 900px;
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+
+        .blog-container {
+            max-width: 900px;
+            margin: -50px auto 60px;
+            background: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .blog-content h2 {
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .blog-content h3 {
+            color: var(--text-dark);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .blog-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .blog-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-height: 450px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-box {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .cta-box h4 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Footer & Floating Buttons */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links { margin: 20px 0; }
+        .social-links a { color: #fff; font-size: 24px; margin: 0 10px; transition: color 0.3s; }
+        .social-links a:hover { color: var(--secondary-color); }
+        .footer-legal { margin-bottom: 20px; font-size: 0.9rem; }
+        .footer-legal a { color: #ccc; text-decoration: none; transition: color 0.3s ease; }
+        .footer-legal a:hover { color: var(--secondary-color); }
+        .footer-legal .divider { color: #666; margin: 0 10px; }
+
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: #fff; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .float-btn:hover { transform: scale(1.1); }
+        .wa-btn { background-color: #25D366; }
+        .tg-btn { background-color: #0088cc; }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            header { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            .blog-hero h1 { font-size: 2.2rem; }
+            .blog-container { margin: -30px 20px 40px; padding: 30px 20px; }
+            .blog-content h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://balivacationreal.github.io/homepage/src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
+            <span class="logo-text">Bali Real Vacation</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#packages">Tour Packages</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="blog-hero">
+        <h1>The Ultimate Guide to Nusa Penida</h1>
+        <p>Pristine Beaches, Iconic Cliffs, and Underwater Wonders</p>
+    </section>
+
+    <main class="blog-container">
+        <div class="blog-content">
+            <p><strong>Nusa Penida</strong> is an enchanting island just a short fast-boat ride from mainland Bali. It invites you to step away from the bustling tourist hubs and immerse yourself in a world of raw, untamed natural beauty. From dramatic coastal cliffs to vibrant underwater ecosystems, this hidden gem has become a go-to destination for travelers seeking an unforgettable adventure.</p>
+
+            <img src="https://balivacationreal.github.io/homepage/src/assets/broken-beach-nusa-penida.webp" alt="Broken Beach Nusa Penida">
+
+            <h2>The Dramatic West Coast Wonders</h2>
+            <p>The western side of Nusa Penida is famous for its jaw-dropping cliff formations and unique geological marvels.</p>
+            
+            <h3>Kelingking Beach</h3>
+            <p>Often referred to as the crown jewel of the island, Kelingking Beach is arguably the most iconic location on Nusa Penida. Its unique cliff formation resembles a T-Rex and offers a dramatic panorama of turquoise waters crashing against pristine white sand far below.</p>
+            
+            <h3>Broken Beach & Angel's Billabong</h3>
+            <p>Just a short drive away lies Broken Beach (Pasih Uug), a spectacular circular cove encircled by towering cliffs with a natural rock archway. A short walk from there is Angel's Billabong, a naturally formed crystal-clear infinity pool carved into the rugged cliffs, perfect for stunning photography during low tide.</p>
+            
+            <div class="cta-box">
+                <h4>Experience the West Coast</h4>
+                <p>Want to see these iconic spots without the stress of navigating the island's rugged roads? Our dedicated team ensures a seamless journey.</p>
+                <a href="/west-nusa-penida.html" class="btn">View West Nusa Penida Tour</a>
+            </div>
+
+            <h2>The Untouched East Coast Marvels</h2>
+            <p>For those seeking a more secluded escape, the eastern coast offers breathtaking panoramic perfection and dramatic coastal scenery.</p>
+            
+            <h3>Diamond Beach & Atuh Beach</h3>
+            <p>Diamond Beach is named after the sharp, diamond-shaped karst formations rising gracefully from the crystal-clear ocean. Right next door is Atuh Beach, a hidden gem offering a tranquil retreat with soft white sand framed by unique rock formations.</p>
+            
+            <h3>Thousand Islands Viewpoint & Tree House</h3>
+            <p>Also known as Raja Lima, this viewpoint offers one of the most breathtaking panoramic vistas on the island, featuring scattered rock formations across the ocean. Nearby, you will find the famous Molenteng Tree House, providing a magical backdrop for your vacation memories.</p>
+
+            <div class="cta-box">
+                <h4>Discover the East Coast</h4>
+                <p>Explore the less-traveled, breathtaking side of Nusa Penida with a comprehensive itinerary designed for nature lovers and photography enthusiasts.</p>
+                <a href="/east-nusa-penida.html" class="btn">View East Nusa Penida Tour</a>
+            </div>
+
+            <h2>World-Class Underwater Adventures</h2>
+            <p>Beyond its towering cliffs, Nusa Penida is a world-renowned destination for spectacular marine life and pristine coral reefs.</p>
+            
+            <h3>Manta Point & Crystal Bay</h3>
+            <p>Snorkeling in these nutrient-rich waters provides the exhilarating opportunity to swim alongside magnificent Reef Manta Rays. Crystal Bay, highly regarded for its excellent visibility and calm waters, is a snorkeling paradise teeming with vibrant tropical fish and colorful coral gardens.</p>
+
+            <div class="cta-box">
+                <h4>Dive Into The Blue</h4>
+                <p>Ready to explore the underwater world? We provide all the gear, boat transfers, and local expertise for an unforgettable day in the water.</p>
+                <a href="/nusa-penida-snorkeling.html" class="btn">View Snorkeling Tour</a>
+            </div>
+
+            <h2>Plan Your Perfect Island Escape</h2>
+            <p>Whether you are an adventure seeker, a photography lover, or someone looking to relax by pristine shores, Nusa Penida truly delivers. At <strong>Bali Real Vacation</strong>, our tailored private tours and day trips ensure you experience the absolute best of this tropical paradise comfortably and affordably. Let us turn your dream vacation into a reality!</p>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <h2>Bali Real Vacation</h2>
+        <p>Your trusted travel partner in Bali & Nusa Penida.</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/balirealvacation" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <div class="footer-legal">
+            <a href="/privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="/term.html">Terms of Service</a>
+        </div>
+        
+        <p>&copy; 2026 Bali Real Vacation. All Rights Reserved.</p>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://t.me/+6281239156586" class="float-btn tg-btn" target="_blank" title="Contact us on Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="https://wa.me/6281239156586" class="float-btn wa-btn" target="_blank" title="Contact us on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+</body>
+</html>
