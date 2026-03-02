@@ -95,7 +95,7 @@
         /* Hero Section */
         .tour-hero {
             height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('src/assets/kecak-dance-uluwatu.webp') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('src/assets/uluwatu-temple-cliffview.webp') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -235,6 +235,45 @@
             margin-right: 10px;
         }
 
+       /* Tour Image Gallery */
+        .tour-gallery {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .tour-gallery h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            /* Automatically creates columns based on screen size */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            /* Forces all images to be the same uniform rectangle shape */
+            aspect-ratio: 4 / 3; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        /* Smooth zoom effect on hover */
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
         /* Footer */
         footer {
             background-color: #1a1a1a;
@@ -349,6 +388,19 @@
                         </div>
                     </li>
                 </ul>
+                <div class="tour-gallery">
+                    <h2>Tour Gallery</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><img src="src/assets/uluwatu/gwk-statue-closeup.webp" alt="GWK Cultural Park"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/labuansait-beach.webp" alt="Padang Padang Beach"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/uluwatu-cliff.webp" alt="Uluwatu Temple Cliff"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/watchout-the-monkey.webp" alt="Watchout the Monkey"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/uluwatu-temple.webp" alt="Infront of Uluwatu Temple"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/kecak-dance-uluwatu-sunset.webp" alt="Kecak Dance Performance"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/sunset-view-uluwatu.webp" alt="Sunset View from the Stage"></div>
+                        <div class="gallery-item"><img src="src/assets/uluwatu/sunset-uluwatu.webp" alt="Sunset at Uluwatu Temple"></div>
+                    </div>
+                </div>
             </div>
 
             <aside>
@@ -417,8 +469,8 @@
         </a>
     </div>
 
-    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-    <script src="https://mediafiles.botpress.cloud/YOUR_BOTPRESS_ID/webchat/config.js" defer></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/02/28/15/20260228152626-Y7SR99L0.js" defer></script>
 
 </body>
 </html>
