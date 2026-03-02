@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Uluwatu Full Day Tour - South Bali | Bali Real Vacation">
+    <meta name="description" content="Experience the magic of South Bali. Visit GWK Cultural Park, Padang Padang Beach, Uluwatu Temple, watch the Kecak Fire Dance, and enjoy a Jimbaran seafood dinner.">
+
+    <title>Uluwatu Full Day Tour | Bali Real Vacation</title>
+    <link rel="icon" type="image/webp" href="src/assets/favicon-bali-real.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Shared Modern Color Palette & Typography */
+        :root {
+            --primary-color: #005B96; 
+            --secondary-color: #FF7F50; 
+            --text-dark: #2C3E50; 
+            --text-light: #FFFFFF;
+            --bg-light: #F8F9FA; 
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-family: var(--font-body);
+        }
+
+        h1, h2, h3, h4, .logo-text, .btn {
+            font-family: var(--font-heading);
+        }
+
+        /* Navbar */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 50px; 
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .tour-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('src/assets/uluwatu-temple-sunset.webp') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .tour-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* Main Content Container */
+        .tour-container {
+            max-width: 1000px;
+            margin: -50px auto 60px;
+            background: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Two Column Layout */
+        .tour-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        h2.section-heading {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
+        }
+
+        .itinerary-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .itinerary-item {
+            display: flex;
+            margin-bottom: 25px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .itinerary-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        .itinerary-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .itinerary-details p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Sidebar Pricing Card */
+        .pricing-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 100px;
+        }
+
+        .price-tier {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-tier:last-of-type {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .price-tier span { font-weight: 600; }
+        .price-amount { color: var(--secondary-color); font-size: 1.2rem; font-weight: 700; }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover { background-color: #e66b3b; transform: translateY(-2px); }
+
+        .inclusions-list {
+            list-style: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .inclusions-list li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .inclusions-list li i {
+            color: #25D366;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .social-links a { color: #fff; font-size: 24px; margin: 0 12px; transition: color 0.3s; }
+        .social-links a:hover { color: var(--secondary-color); }
+        .footer-legal { margin: 20px 0; font-size: 0.95rem; }
+        .footer-legal a { color: #ccc; text-decoration: none; }
+        .footer-legal a:hover { color: var(--secondary-color); }
+        .footer-legal .divider { margin: 0 10px; color: #555; }
+
+        /* Floating Buttons - Left Aligned */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: #fff; text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .float-btn:hover { transform: scale(1.1); }
+        .wa-btn { background-color: #25D366; }
+        .tg-btn { background-color: #0088cc; }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .tour-grid { grid-template-columns: 1fr; }
+            .tour-hero h1 { font-size: 2.5rem; }
+            .tour-container { margin: -30px 20px 40px; padding: 30px 20px; }
+            header { flex-direction: column; padding: 15px; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
+            <span class="logo-text">Bali Real Vacation</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#packages">Tour Packages</a></li>
+                <li><a href="index.html#guides">Travel Guides</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="tour-hero">
+        <h1>Uluwatu Full Day Tour</h1>
+        <p style="font-size: 1.2rem; margin-top: 10px;">Sunsets, Culture, and Coastal Splendor</p>
+    </section>
+
+    <main class="tour-container">
+        <div class="tour-grid">
+            <div class="tour-description">
+                <p style="font-size: 1.1rem; margin-bottom: 30px; color: #444;">Discover the magic of South Bali with our exclusive, all-inclusive Uluwatu Full Day Tour. This carefully crafted itinerary combines stunning coastal scenery, rich cultural heritage, and a mesmerizing sunset experience. From towering statues to cliffside temples and romantic beachfront dining, this tour showcases the absolute best of the Bukit Peninsula.</p>
+                
+                <h2 class="section-heading">Tour Itinerary</h2>
+                
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-monument"></i></div>
+                        <div class="itinerary-details">
+                            <h3>1. GWK Cultural Park</h3>
+                            <p>Begin your journey at the Garuda Wisnu Kencana Cultural Park. Marvel at the colossal, 122-meter-tall statue of Lord Vishnu riding the mythical bird Garuda, a breathtaking symbol of Indonesian heritage and incredible architectural engineering.</p>
+                        </div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
+                        <div class="itinerary-details">
+                            <h3>2. Padang Padang Beach</h3>
+                            <p>Relax on the pristine white sands of this world-famous surfing beach. Tucked beneath dramatic limestone cliffs and accessed via a unique hollow rock entrance, this picturesque cove gained global fame after being featured in the movie 'Eat Pray Love'.</p>
+                        </div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-brands fa-pageline"></i></div>
+                        <div class="itinerary-details">
+                            <h3>3. Pura Luhur Uluwatu (Temple)</h3>
+                            <p>Explore one of Bali's most spectacular spiritual pillars. Perched proudly on a steep cliff 70 meters above the roaring Indian Ocean, Uluwatu Temple offers panoramic vistas. Keep an eye out for the mischievous resident macaque monkeys who guard the temple grounds!</p>
+                        </div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <div class="itinerary-details">
+                            <h3>4. Kecak & Fire Dance Performance</h3>
+                            <p>As the sun begins to set over the ocean, take your seat in the open-air amphitheater. Experience an unforgettable performance where dozens of men rhythmically chant the epic Hindu Ramayana story around a blazing fire, without the use of any musical instruments.</p>
+                        </div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <div class="itinerary-details">
+                            <h3>5. Jimbaran Bay Seafood Dinner</h3>
+                            <p>Conclude your perfect day under the stars. Sit at a candlelit table directly on the sandy shores of Jimbaran Beach and indulge in a mouth-watering, freshly grilled seafood dinner accompanied by the gentle sound of the waves.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <aside>
+                <div class="pricing-card">
+                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px;">Package Pricing</h3>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">All-Inclusive Private Tour</p>
+                    
+                    <div class="price-tier">
+                        <span>Group of 2</span>
+                        <div class="price-amount">$75 / pax</div>
+                    </div>
+                    <div class="price-tier">
+                        <span>Group of 3</span>
+                        <div class="price-amount">$65 / pax</div>
+                    </div>
+                    <div class="price-tier">
+                        <span>Group of 4+</span>
+                        <div class="price-amount">$59 / pax</div>
+                    </div>
+
+                    <a href="https://wa.me/6281239156586?text=Hello%20Bali%20Real%20Vacation!%20I%20would%20like%20to%20book%20the%20Uluwatu%20Full%20Day%20Tour." class="btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Book Now
+                    </a>
+
+                    <ul class="inclusions-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Private A/C Transport</li>
+                        <li><i class="fa-solid fa-circle-check"></i> English-Speaking Driver</li>
+                        <li><i class="fa-solid fa-circle-check"></i> All Entrance Tickets (GWK & Beaches)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Kecak Dance Tickets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Jimbaran Seafood Dinner</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Bottled Mineral Water</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Parking & Toll Fees</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <h2>Bali Real Vacation</h2>
+        <p>Your trusted travel partner in Bali & Nusa Penida.</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/balirealvacation" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <div class="footer-legal">
+            <a href="/nusa-penida-guide.html">Nusa Penida Guide</a>
+            <span class="divider">|</span>
+            <a href="/bali-destinations-guide.html">Bali Area Guide</a>
+            <span class="divider">|</span>
+            <a href="/privacy.html">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="/term.html">Terms of Service</a>
+        </div>
+        
+        <p>&copy; 2026 Bali Real Vacation. All Rights Reserved.</p>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://t.me/+6281239156586" class="float-btn tg-btn" target="_blank" title="Contact us on Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
+        <a href="https://wa.me/6281239156586" class="float-btn wa-btn" target="_blank" title="Contact us on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/YOUR_BOTPRESS_ID/webchat/config.js" defer></script>
+
+</body>
+</html>
