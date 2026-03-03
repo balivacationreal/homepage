@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y07TTMJDX1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y07TTMJDX1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y07TTMJDX1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y07TTMJDX1');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="The Ultimate Guide to Nusa Penida | Bali Real Vacation">
@@ -17,30 +15,37 @@
 
     <title>The Ultimate Guide to Nusa Penida | Bali Real Vacation</title>
     <link rel="icon" type="image/webp" href="src/assets/favicon-bali-real.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Inherited Base Styles from Main Site */
+        /* Modernized Color Palette & Typography */
         :root {
-            --primary-color: #007BFF;
-            --secondary-color: #FF9800;
-            --text-dark: #333;
-            --text-light: #fff;
-            --bg-light: #f4f7f6;
+            --primary-color: #005B96; 
+            --secondary-color: #FF7F50; 
+            --text-dark: #2C3E50; 
+            --text-light: #FFFFFF;
+            --bg-light: #F8F9FA; 
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-family: var(--font-body);
+        }
+
+        h1, h2, h3, h4, .logo-text, .btn {
+            font-family: var(--font-heading);
         }
 
         /* Navbar */
@@ -85,6 +90,21 @@
             color: var(--secondary-color);
         }
 
+        /* Mobile Menu Button Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary-color);
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -94,6 +114,7 @@
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
+            font-family: var(--font-heading);
             font-weight: 600;
             transition: color 0.3s;
         }
@@ -109,20 +130,23 @@
             color: #fff;
             text-decoration: none;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
             display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: #e68a00;
+            background-color: #e66b3b;
+            transform: translateY(-2px);
         }
 
         /* Blog Specific Styles */
         .blog-hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://balivacationreal.github.io/homepage/src/assets/kelingking-beach-nusa-penida.webp') center/cover;
+            height: 55vh;
+            background: linear-gradient(rgba(0, 40, 70, 0.6), rgba(0, 40, 70, 0.6)), url('src/assets/perfect-view-kelingking-beach.webp') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -133,7 +157,7 @@
         }
 
         .blog-hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
             max-width: 900px;
         }
@@ -141,38 +165,41 @@
         .blog-hero p {
             font-size: 1.2rem;
             max-width: 600px;
+            font-weight: 400;
         }
 
         .blog-container {
             max-width: 900px;
-            margin: -50px auto 60px;
+            margin: -60px auto 60px;
             background: #fff;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
             position: relative;
             z-index: 10;
         }
 
         .blog-content h2 {
             color: var(--primary-color);
-            margin-top: 40px;
+            margin-top: 50px;
             margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
         }
 
         .blog-content h3 {
             color: var(--text-dark);
-            margin-top: 25px;
+            margin-top: 30px;
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .blog-content p {
             font-size: 1.1rem;
-            color: #555;
+            color: #444;
             margin-bottom: 20px;
-            line-height: 1.8;
         }
 
         .blog-content img {
@@ -184,47 +211,62 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
+        /* Upgraded CTA Box */
         .cta-box {
             background-color: var(--bg-light);
-            padding: 30px;
-            border-radius: 10px;
-            margin: 40px 0;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 45px 0;
             text-align: center;
-            border-left: 5px solid var(--secondary-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+            border-top: 5px solid var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .cta-box:hover {
+            transform: translateY(-5px);
         }
 
         .cta-box h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .cta-box p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.05rem;
+            color: #555;
         }
 
         /* Footer & Floating Buttons */
         footer {
-            background-color: #222;
+            background-color: #1a1a1a;
             color: #ccc;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            font-family: var(--font-body);
+        }
+        
+        footer h2 {
+            color: var(--text-light);
+            margin-bottom: 10px;
         }
 
-        .social-links { margin: 20px 0; }
-        .social-links a { color: #fff; font-size: 24px; margin: 0 10px; transition: color 0.3s; }
+        .social-links { margin: 25px 0; }
+        .social-links a { color: #fff; font-size: 24px; margin: 0 12px; transition: color 0.3s; }
         .social-links a:hover { color: var(--secondary-color); }
-        .footer-legal { margin-bottom: 20px; font-size: 0.9rem; }
+        .footer-legal { margin-bottom: 20px; font-size: 0.95rem; }
         .footer-legal a { color: #ccc; text-decoration: none; transition: color 0.3s ease; }
         .footer-legal a:hover { color: var(--secondary-color); }
-        .footer-legal .divider { color: #666; margin: 0 10px; }
+        .footer-legal .divider { color: #555; margin: 0 10px; }
 
+        /* Floating Buttons positioned on the Bottom Left */
         .floating-buttons {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px; 
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -236,20 +278,46 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 30px; color: #fff; text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             transition: transform 0.3s;
         }
         .float-btn:hover { transform: scale(1.1); }
         .wa-btn { background-color: #25D366; }
         .tg-btn { background-color: #0088cc; }
 
-        /* Responsive Design */
+        /* Responsive Header Updates */
         @media(max-width: 768px) {
-            header { flex-direction: column; padding: 15px; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
-            .blog-hero h1 { font-size: 2.2rem; }
-            .blog-container { margin: -30px 20px 40px; padding: 30px 20px; }
-            .blog-content h2 { font-size: 1.6rem; }
+            header {
+                padding: 15px 20px;
+                flex-direction: row; 
+                position: relative;
+            }
+            
+            .mobile-menu-btn { display: block; }
+
+            #navMenu {
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+
+            #navMenu.active { display: block; }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                margin: 0;
+            }
+
+            .blog-hero h1 { font-size: 2.2rem; line-height: 1.3; }
+            .blog-container { margin: -40px 20px 40px; padding: 30px 20px; }
+            .blog-content h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -257,14 +325,20 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="https://balivacationreal.github.io/homepage/src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
+            <img src="src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
             <span class="logo-text">Bali Real Vacation</span>
         </a>
-        <nav>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
             <ul>
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="index.html#about">About Us</a></li>
                 <li><a href="index.html#packages">Tour Packages</a></li>
+                <li><a href="index.html#guides">Travel Guides</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
@@ -279,7 +353,7 @@
         <div class="blog-content">
             <p><strong>Nusa Penida</strong> is an enchanting island just a short fast-boat ride from mainland Bali. It invites you to step away from the bustling tourist hubs and immerse yourself in a world of raw, untamed natural beauty. From dramatic coastal cliffs to vibrant underwater ecosystems, this hidden gem has become a go-to destination for travelers seeking an unforgettable adventure.</p>
 
-            <img src="https://balivacationreal.github.io/homepage/src/assets/broken-beach-nusa-penida.webp" alt="Broken Beach Nusa Penida">
+            <img src="src/assets/broken-beach-nusa-penida.webp" alt="Broken Beach Nusa Penida">
 
             <h2>The Dramatic West Coast Wonders</h2>
             <p>The western side of Nusa Penida is famous for its jaw-dropping cliff formations and unique geological marvels.</p>
@@ -317,10 +391,10 @@
             <h3>Manta Point & Crystal Bay</h3>
             <p>Snorkeling in these nutrient-rich waters provides the exhilarating opportunity to swim alongside magnificent Reef Manta Rays. Crystal Bay, highly regarded for its excellent visibility and calm waters, is a snorkeling paradise teeming with vibrant tropical fish and colorful coral gardens.</p>
 
-            <div class="cta-box">
+            <div class="cta-box" style="border-top-color: #25D366;">
                 <h4>Dive Into The Blue</h4>
                 <p>Ready to explore the underwater world? We provide all the gear, boat transfers, and local expertise for an unforgettable day in the water.</p>
-                <a href="/nusa-penida-snorkeling.html" class="btn">View Snorkeling Tour</a>
+                <a href="/nusa-penida-snorkeling.html" class="btn" style="background-color: #25D366;">View Snorkeling Tour</a>
             </div>
 
             <h2>Plan Your Perfect Island Escape</h2>
@@ -337,6 +411,10 @@
         </div>
 
         <div class="footer-legal">
+            <a href="/nusa-penida-guide.html">Nusa Penida Guide</a>
+            <span class="divider">|</span>
+            <a href="/bali-destinations-guide.html">Bali Area Guide</a>
+            <span class="divider">|</span>
             <a href="/privacy.html">Privacy Policy</a>
             <span class="divider">|</span>
             <a href="/term.html">Terms of Service</a>
@@ -353,6 +431,38 @@
             <i class="fa-brands fa-whatsapp"></i>
         </a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('#navMenu ul li a');
+
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
