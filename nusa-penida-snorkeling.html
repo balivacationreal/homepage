@@ -1,278 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y07TTMJDX1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y07TTMJDX1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y07TTMJDX1"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Y07TTMJDX1');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nusa Penida Snorkeling Tour | Bali Real Vacation</title>
-    <link rel="icon" type="image/webp" href="src/assets/bali-real-vacation-logo.webp">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Nusa Penida Snorkeling & Land Tour | Bali Real Vacation</title>
+    <link rel="icon" type="image/webp" href="src/assets/favicon-bali-real.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
+    
     <style>
-        /* Core Variables matching your main site */
-        :root {
-            --primary-color: #007BFF;
-            --secondary-color: #FF9800;
-            --text-dark: #333;
-            --bg-light: #f4f7f6;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-
-        /* Header */
+        :root { --primary-color: #005B96; --secondary-color: #FF7F50; --text-dark: #2C3E50; --text-light: #FFFFFF; --bg-light: #F8F9FA; --font-heading: 'Montserrat', sans-serif; --font-body: 'Open Sans', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; font-family: var(--font-body); }
+        h1, h2, h3, h4, .logo-text, .btn { font-family: var(--font-heading); }
         header { background-color: #fff; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .logo { display: flex; align-items: center; text-decoration: none; gap: 12px; }
-        .logo img { height: 50px; width: auto; object-fit: contain; }
-        .logo-text { font-size: 24px; font-weight: 700; color: var(--primary-color); }
+        .logo img { height: 50px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
+        .logo-text { font-size: 24px; font-weight: 700; color: var(--primary-color); transition: color 0.3s ease; }
         nav ul { list-style: none; display: flex; gap: 20px; }
-        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 600; }
-
-        /* Tour Hero Section */
-        .tour-hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('src/assets/snorkeling-manta-point.webp') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-        .tour-hero h1 { font-size: 3rem; margin-bottom: 10px; }
-
-        /* Page Layout */
-        .tour-page-wrapper {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        /* Left Column: Details */
-        .tour-content { flex: 2; background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .tour-content h2 { color: var(--primary-color); font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
-        .tour-content h2:first-child { margin-top: 0; }
-        .tour-content p { color: #555; margin-bottom: 15px; font-size: 1.05rem; }
-        
-        /* Included & Bring Lists */
-        .feature-list { list-style: none; margin-bottom: 20px; }
-        .feature-list li { margin-bottom: 10px; font-size: 1.05rem; }
-        .feature-list.included li i { color: #25D366; margin-right: 10px; }
-        .feature-list.bring li i { color: var(--secondary-color); margin-right: 10px; }
-
-        /* Itinerary Timeline */
-        .timeline { list-style: none; border-left: 3px solid var(--primary-color); padding-left: 20px; margin-left: 10px; margin-top: 20px; }
-        .timeline li { margin-bottom: 20px; position: relative; }
-        .timeline li::before { content: ''; position: absolute; left: -29px; top: 5px; width: 15px; height: 15px; background: #fff; border: 3px solid var(--secondary-color); border-radius: 50%; }
-        .timeline strong { color: var(--primary-color); display: inline-block; width: 100px; }
-
-        /* Right Column: Sticky Sidebar */
-        .tour-sidebar { flex: 1; position: sticky; top: 120px; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .sidebar-title { font-size: 1.5rem; margin-bottom: 20px; text-align: center; color: var(--text-dark); }
-        
-        /* Pricing UI */
-        .price-list { list-style: none; margin-bottom: 20px; }
-        .price-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #ccc; }
-        .price-list li:last-child { border-bottom: none; }
-        .price-list strong { color: var(--primary-color); font-size: 1.2rem; }
-        .idr-price { color: #666; font-size: 0.9rem; }
-        
-        .btn-book { display: block; width: 100%; text-align: center; background: #25D366; color: #fff; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: background 0.3s; }
-        .btn-book:hover { background: #20b858; }
-
-        /* Responsive */
-        @media(max-width: 992px) { .tour-page-wrapper { flex-direction: column; } .tour-sidebar { width: 100%; position: static; } }
-        /* Mobile Menu Button Styles */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: var(--primary-color);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Responsive Header Updates */
-        @media(max-width: 768px) {
-            header {
-                padding: 15px 20px;
-                flex-direction: row; 
-                position: relative;
-            }
-            
-            .mobile-menu-btn {
-                display: block; 
-            }
-
-            #navMenu {
-                display: none; 
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #fff;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-                padding: 20px 0;
-            }
-
-            #navMenu.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-                margin: 0;
-            }
-        }
+        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--secondary-color); }
+        .tour-hero { height: 60vh; background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('src/assets/snorkeling-manta-point.webp') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--text-light); padding: 0 20px; }
+        .tour-hero h1 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+        .tour-container { max-width: 1000px; margin: -50px auto 60px; background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); position: relative; z-index: 10; }
+        .tour-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 30px; }
+        h2.section-heading { color: var(--primary-color); font-size: 2rem; margin-bottom: 20px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; margin-top: 30px;}
+        h2.section-heading:first-child { margin-top: 0; }
+        .itinerary-list { list-style: none; margin-bottom: 30px; }
+        .itinerary-item { display: flex; margin-bottom: 25px; background: var(--bg-light); padding: 20px; border-radius: 10px; border-left: 4px solid var(--secondary-color); }
+        .itinerary-icon { font-size: 24px; color: var(--primary-color); margin-right: 20px; margin-top: 5px; width: 30px; text-align: center; }
+        .itinerary-details h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--text-dark); }
+        .itinerary-details p { color: #555; font-size: 1rem; }
+        .pricing-card { background: var(--bg-light); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: sticky; top: 100px; }
+        .price-tier { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #ddd; }
+        .price-tier:last-of-type { border-bottom: none; margin-bottom: 20px; }
+        .price-tier span { font-weight: 600; }
+        .price-amount { color: var(--secondary-color); font-size: 1.2rem; font-weight: 700; display: flex; flex-direction: column; align-items: flex-end; }
+        .idr-price { color: #666; font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+        .btn { padding: 15px 30px; background-color: var(--secondary-color); color: #fff; text-decoration: none; border-radius: 30px; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s, background 0.3s; display: block; width: 100%; text-align: center; border: none; cursor: pointer; }
+        .btn:hover { background-color: #e66b3b; transform: translateY(-2px); }
+        .inclusions-list { list-style: none; margin-top: 20px; text-align: left; }
+        .inclusions-list li { margin-bottom: 10px; font-size: 0.95rem; color: #444; }
+        .inclusions-list li i { color: #25D366; margin-right: 10px; }
+        .bring-list li i { color: var(--secondary-color); margin-right: 10px; }
+        footer { background-color: #1a1a1a; color: #ccc; text-align: center; padding: 50px 20px; }
+        .social-links a { color: #fff; font-size: 24px; margin: 0 12px; transition: color 0.3s; }
+        .social-links a:hover { color: var(--secondary-color); }
+        .footer-legal { margin: 20px 0; font-size: 0.95rem; }
+        .footer-legal a { color: #ccc; text-decoration: none; }
+        .footer-legal a:hover { color: var(--secondary-color); }
+        .footer-legal .divider { margin: 0 10px; color: #555; }
+        .floating-buttons { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transition: transform 0.3s; }
+        .float-btn:hover { transform: scale(1.1); }
+        .wa-btn { background-color: #25D366; }
+        .tg-btn { background-color: #0088cc; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 28px; color: var(--primary-color); cursor: pointer; transition: color 0.3s ease; }
+        @media(max-width: 768px) { .tour-grid { grid-template-columns: 1fr; } .tour-hero h1 { font-size: 2.5rem; } .tour-container { margin: -30px 20px 40px; padding: 30px 20px; } header { padding: 15px 20px; flex-direction: row; position: relative; } .mobile-menu-btn { display: block; } #navMenu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px 0; } #navMenu.active { display: block; } nav ul { flex-direction: column; align-items: center; gap: 20px; margin: 0; } }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="/" class="logo">
+        <a href="index.html" class="logo">
             <img src="src/assets/bali-real-vacation-logo.webp" alt="Bali Real Vacation Logo">
             <span class="logo-text">Bali Real Vacation</span>
         </a>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-
+        <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
         <nav id="navMenu">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/#packages">All Packages</a></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#packages">Tour Packages</a></li>
+                <li><a href="index.html#guides">Travel Guides</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="tour-hero">
         <h1>Nusa Penida Snorkeling & Land Tour</h1>
+        <p style="font-size: 1.2rem; margin-top: 10px;">Swim with Manta Rays & Explore Iconic Cliffs</p>
     </section>
 
-    <div class="tour-page-wrapper">
-        
-        <div class="tour-content">
-            <h2>Tour Overview</h2>
-            <p>Experience the ultimate Nusa Penida adventure with our premium, all-inclusive day trip. Dive into the crystal-clear waters to swim alongside majestic Manta Rays before exploring the island's most famous land attractions.</p>
-            <p>This comprehensive package combines three world-class snorkeling spots with the breathtaking cliffs of the West Coast, ensuring you see the absolute best of both the ocean and the island in one unforgettable day. We provide top-tier snorkeling gear and photo session so you can capture every underwater moment.</p>
+    <main class="tour-container">
+        <div class="tour-grid">
+            <div class="tour-description">
+                <h2 class="section-heading">Tour Overview</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 30px; color: #444;">Experience the ultimate Nusa Penida adventure with our premium, all-inclusive day trip. Dive into the crystal-clear waters to swim alongside majestic Manta Rays before exploring the island's most famous land attractions. This comprehensive package combines three world-class snorkeling spots with the breathtaking cliffs of the West Coast, ensuring you see the absolute best of both the ocean and the island in one unforgettable day.</p>
+                
+                <h2 class="section-heading">What to Bring</h2>
+                <ul class="inclusions-list bring-list" style="margin-bottom: 30px;">
+                    <li><i class="fa-solid fa-suitcase-rolling"></i> Comfortable footwear for cliffside walking</li>
+                    <li><i class="fa-solid fa-suitcase-rolling"></i> Swimwear and an extra change of clothes</li>
+                    <li><i class="fa-solid fa-suitcase-rolling"></i> Sun protection (reef-safe sunscreen recommended)</li>
+                    <li><i class="fa-solid fa-suitcase-rolling"></i> Personal medication (e.g., motion sickness pills)</li>
+                </ul>
 
-            <h2>What's Included</h2>
-            <ul class="feature-list included">
-                <li><i class="fa-solid fa-check"></i> Private round-trip transportation from your hotel</li>
-                <li><i class="fa-solid fa-check"></i> Round-trip fast boat tickets</li>
-                <li><i class="fa-solid fa-check"></i> Private A/C car on the island</li>
-                <li><i class="fa-solid fa-check"></i> All entrance fees to attractions</li>
-                <li><i class="fa-solid fa-check"></i> English-speaking driver/guide</li>
-                <li><i class="fa-solid fa-check"></i> Lunch on the spot with Balinese/Western foods</li>
-                <li><i class="fa-solid fa-check"></i> Top-tier snorkeling gear</li>
-                <li><i class="fa-solid fa-check"></i> Live-vest for those who can't swim</li>
-            </ul>
+                <h2 class="section-heading">Tour Itinerary</h2>
+                <ul class="itinerary-list">
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-car"></i></div>
+                        <div class="itinerary-details"><h3>06:00 AM - Early Pick-up</h3><p>Hotel pick-up and transfer to Sanur Harbor.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-mask-water"></i></div>
+                        <div class="itinerary-details"><h3>09:00 AM - Snorkeling Adventure</h3><p>Swim with Manta Rays at Manta Bay, Gamat Bay, and Crystal Bay.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <div class="itinerary-details"><h3>12:00 PM - Lunch</h3><p>Enjoy a delicious local lunch to refuel after snorkeling.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-water"></i></div>
+                        <div class="itinerary-details"><h3>01:30 PM - Angel's Billabong</h3><p>Visit the stunning natural infinity pool.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-camera"></i></div>
+                        <div class="itinerary-details"><h3>02:00 PM - Broken Beach</h3><p>Marvel at the spectacular archway and circular cove.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                        <div class="itinerary-details"><h3>03:00 PM - Kelingking Cliff</h3><p>Experience the breathtaking T-Rex cliff viewpoints.</p></div>
+                    </li>
+                    <li class="itinerary-item">
+                        <div class="itinerary-icon"><i class="fa-solid fa-ship"></i></div>
+                        <div class="itinerary-details"><h3>04:45 PM - Return to Bali</h3><p>Fast boat ride back and drop-off at your hotel.</p></div>
+                    </li>
+                </ul>
+            </div>
 
-            <h2>What to Bring</h2>
-            <ul class="feature-list bring">
-                <li><i class="fa-solid fa-suitcase-rolling"></i> Comfortable footwear for cliffside walking</li>
-                <li><i class="fa-solid fa-suitcase-rolling"></i> Swimwear and an extra change of clothes</li>
-                <li><i class="fa-solid fa-suitcase-rolling"></i> Sun protection (reef-safe sunscreen recommended)</li>
-                <li><i class="fa-solid fa-suitcase-rolling"></i> Personal medication (e.g., motion sickness pills)</li>
-            </ul>
+            <aside>
+                <div class="pricing-card">
+                    <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 10px;">Package Pricing</h3>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">All-Inclusive Private Tour</p>
+                    
+                    <div class="price-tier">
+                        <span>Group of 2</span>
+                        <div class="price-amount">$79 <span class="idr-price" data-usd="79">| Rp 1.320.000</span></div>
+                    </div>
+                    <div class="price-tier">
+                        <span>Group of 3</span>
+                        <div class="price-amount">$75 <span class="idr-price" data-usd="75">| Rp 1.250.000</span></div>
+                    </div>
+                    <div class="price-tier">
+                        <span>Group of 4+</span>
+                        <div class="price-amount">$69 <span class="idr-price" data-usd="69">| Rp 1.150.000</span></div>
+                    </div>
 
-            <h2>Itinerary Schedule</h2>
-            <ul class="timeline">
-                <li><strong>06:00 AM</strong> Early hotel pick-up and transfer to Sanur Harbor.</li>
-                <li><strong>09:00 AM</strong> Snorkeling adventure begins! Swim at Manta Bay, Gamat Bay, and Crystal Bay.</li>
-                <li><strong>12:00 PM</strong> Enjoy lunch on the spot with Balinese/Western foods to refuel.</li>
-                <li><strong>01:30 PM</strong> Visit the natural infinity pool of Angel's Billabong.</li>
-                <li><strong>02:00 PM</strong> Marvel at the archway of Broken Beach.</li>
-                <li><strong>03:00 PM</strong> Experience the breathtaking Kelingking Cliff viewpoints.</li>
-                <li><strong>04:45 PM</strong> Fast boat return trip back to Bali.</li>
-            </ul>
+                    <a href="https://wa.me/6281239156586?text=Hello%20Bali%20Real%20Vacation!%20I%20would%20like%20to%20book%20the%20Nusa%20Penida%20Snorkeling%20Tour." class="btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> Book Now
+                    </a>
+
+                    <ul class="inclusions-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Private A/C Transport</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Return Fast Boat Tickets</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Top-tier Snorkeling Gear</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Life-vest included</li>
+                        <li><i class="fa-solid fa-circle-check"></i> All Entrance Fees & Guide</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Lunch included</li>
+                    </ul>
+                </div>
+            </aside>
         </div>
+    </main>
 
-        <div class="tour-sidebar">
-            <h3 class="sidebar-title">Book This Tour</h3>
-            <ul class="price-list">
-                <li>Group of 2: <strong>$79</strong> <span class="idr-price" data-usd="79">| Rp 1.320.000</span></li>
-                <li>Group of 3: <strong>$75</strong> <span class="idr-price" data-usd="75">| Rp 1.250.000</span></li>
-                <li>Group of 4+: <strong>$69</strong> <span class="idr-price" data-usd="69">| Rp 1.150.000</span></li>
-            </ul>
-            <p style="text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 20px;">* Prices are per person</p>
-            
-            <a href="https://wa.me/6281239156586?text=Hello%20Bali%20Real%20Vacation!%20I%20would%20like%20to%20book%20the%20Nusa%20Penida%20Snorkeling%20Tour." class="btn-book" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Book via WhatsApp
-            </a>
+    <footer id="contact">
+        <h2>Bali Real Vacation</h2>
+        <p>Your trusted travel partner in Bali & Nusa Penida.</p>
+        <div class="social-links"><a href="https://instagram.com/balirealvacation" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
+        <div class="footer-legal">
+            <a href="/nusa-penida-guide.html">Nusa Penida Guide</a><span class="divider">|</span>
+            <a href="/bali-destinations-guide.html">Bali Area Guide</a><span class="divider">|</span>
+            <a href="/privacy.html">Privacy Policy</a><span class="divider">|</span>
+            <a href="/term.html">Terms of Service</a>
         </div>
+        <p>&copy; 2026 Bali Real Vacation. All Rights Reserved.</p>
+    </footer>
 
+    <div class="floating-buttons">
+        <a href="https://t.me/+6281239156586" class="float-btn tg-btn" target="_blank" title="Contact us on Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://wa.me/6281239156586" class="float-btn wa-btn" target="_blank" title="Contact us on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (navMenu.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-xmark'); } else { icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars'); }
+                });
+                document.querySelectorAll('#navMenu ul li a').forEach(link => {
+                    link.addEventListener('click', () => { navMenu.classList.remove('active'); const icon = mobileMenuBtn.querySelector('i'); icon.classList.remove('fa-xmark'); icon.classList.add('fa-bars'); });
+                });
+            }
             try {
                 const response = await fetch('https://open.er-api.com/v6/latest/USD');
                 const data = await response.json();
                 const idrRate = data.rates.IDR;
-
                 document.querySelectorAll('.idr-price').forEach(el => {
                     const usdValue = parseFloat(el.getAttribute('data-usd'));
                     const exactIdr = usdValue * idrRate;
                     const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
-                    
-                    const formattedIdr = new Intl.NumberFormat('id-ID', {
-                        style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0
-                    }).format(cleanIdr);
-
+                    const formattedIdr = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(cleanIdr);
                     el.textContent = `| ${formattedIdr}`;
                 });
-            } catch (error) {
-                console.error('Exchange rate fetch failed. Using default prices.', error);
-            }
-            // Mobile Hamburger Menu Logic
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navMenu = document.getElementById('navMenu');
-            const navLinks = document.querySelectorAll('#navMenu ul li a');
-
-            if (mobileMenuBtn && navMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                    
-                    const icon = mobileMenuBtn.querySelector('i');
-                    if (navMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-xmark');
-                    } else {
-                        icon.classList.remove('fa-xmark');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('active');
-                        const icon = mobileMenuBtn.querySelector('i');
-                        icon.classList.remove('fa-xmark');
-                        icon.classList.add('fa-bars');
-                    });
-                });
-            }
+            } catch (error) { console.error('Exchange rate fetch failed.', error); }
         });
     </script>
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
