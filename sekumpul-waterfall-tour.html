@@ -208,7 +208,8 @@
         }
 
         .price-tier span { font-weight: 600; }
-        .price-amount { color: var(--secondary-color); font-size: 1.2rem; font-weight: 700; }
+        .price-amount { color: var(--secondary-color); font-size: 1.2rem; font-weight: 700; display: flex; flex-direction: column; align-items: flex-end; }
+        .idr-price { color: #666; font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
 
         .btn {
             padding: 15px 30px;
@@ -478,15 +479,15 @@
                     
                     <div class="price-tier">
                         <span>Group of 2</span>
-                        <div class="price-amount">$55 / pax</div>
+                        <div class="price-amount">$55 <span class="idr-price" data-usd="55">| Rp 920.000</span></div>
                     </div>
                     <div class="price-tier">
                         <span>Group of 3</span>
-                        <div class="price-amount">$49 / pax</div>
+                        <div class="price-amount">$49 <span class="idr-price" data-usd="49">| Rp 820.000</span></div>
                     </div>
                     <div class="price-tier">
                         <span>Group of 4+</span>
-                        <div class="price-amount">$45 / pax</div>
+                        <div class="price-amount">$45 <span class="idr-price" data-usd="45">| Rp 750.000</span></div>
                     </div>
 
                     <a href="https://wa.me/6281239156586?text=Hello%20Bali%20Real%20Vacation!%20I%20would%20like%20to%20book%20the%20Sekumpul%20Waterfall%20Tour." class="btn" target="_blank">
@@ -538,7 +539,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navMenu = document.getElementById('navMenu');
             const navLinks = document.querySelectorAll('#navMenu ul li a');
@@ -546,7 +547,6 @@
             if (mobileMenuBtn && navMenu) {
                 mobileMenuBtn.addEventListener('click', () => {
                     navMenu.classList.toggle('active');
-                    
                     const icon = mobileMenuBtn.querySelector('i');
                     if (navMenu.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
@@ -566,6 +566,20 @@
                     });
                 });
             }
+
+            // Live Currency Fetch Logic
+            try {
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                const idrRate = data.rates.IDR;
+                document.querySelectorAll('.idr-price').forEach(el => {
+                    const usdValue = parseFloat(el.getAttribute('data-usd'));
+                    const exactIdr = usdValue * idrRate;
+                    const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
+                    const formattedIdr = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(cleanIdr);
+                    el.textContent = `| ${formattedIdr}`;
+                });
+            } catch (error) { console.error('Exchange rate fetch failed.', error); }
         });
     </script>
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
