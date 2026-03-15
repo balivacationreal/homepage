@@ -362,7 +362,50 @@
                 padding: 0 20px 40px;
             }
         }
-      
+        /* Video Highlight Section */
+        .video-highlight {
+            background-color: #fff;
+            padding: 80px 50px;
+        }
+
+        .video-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .video-text {
+            flex: 1;
+        }
+
+        .video-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .video-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .video-wrapper {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+        }
+
         /* Testimonials Section */
         .testimonials {
             padding: 40px 50px 80px;
@@ -413,9 +456,19 @@
         }
 
         /* Responsive Updates */
+        @media(max-width: 992px) {
+            .video-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
         @media(max-width: 768px) {
-            .testimonials {
+            .video-highlight, .testimonials {
                 padding: 40px 20px;
+            }
+            .video-text h2 {
+                font-size: 2rem;
             }
         }
         /* About Us Section */
@@ -617,7 +670,91 @@
                 padding: 40px 20px;
             }
         }
-       
+        /* Gallery Carousel Section */
+        .gallery-section {
+            padding: 60px 50px 80px;
+            background-color: #fff;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .carousel-track-container {
+            overflow: hidden;
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+        }
+
+        .carousel-track {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--primary-color);
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: #fff;
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        @media(max-width: 768px) {
+            .gallery-section { padding: 40px 20px; }
+            .carousel-track-container { height: 350px; }
+            .slide-caption { font-size: 0.9rem; bottom: 20px; }
+            .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
+        }
         /* Booking Form Section */
         .booking-section {
             padding: 60px 50px 80px;
@@ -891,6 +1028,63 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+<section class="video-highlight">
+        <div class="video-container">
+            <div class="video-text">
+                <h2>Experience the Island Vibe</h2>
+                <p>Get a glimpse of the crystal-clear waters, towering cliffs, and vibrant marine life that await you on our tours. Watch our highlights and start imagining your next adventure.</p>
+                <a href="#packages" class="btn">Find Your Tour</a>
+            </div>
+            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; width: 100%;">
+                <iframe 
+                src="https://www.dailymotion.com/embed/video/xa0iy38?autoplay=0" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
+                frameborder="0" 
+                allow="fullscreen" 
+                allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+</section>
+<section class="gallery-section" id="gallery">
+        <h2 class="section-title">Island Adventures & Activities</h2>
+        <p style="text-align: center; color: #555; margin-bottom: 30px;">See what awaits you in Bali and Nusa Penida.</p>
+        
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev-btn" id="prevBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            
+            <div class="carousel-track-container">
+                <ul class="carousel-track" id="track">
+                    <li class="carousel-slide current-slide">
+                        <img src="https://balivacationreal.github.io/homepage/src/assets/rock-atuh-beach-nusa-penida.webp" alt="Atuh Beach in Nusa Penida">
+                        <div class="slide-caption">Atuh Beach in Nusa Penida</div>
+                    </li>
+                    <li class="carousel-slide">
+                        <img src="https://balivacationreal.github.io/homepage/src/assets/tree-house-nusa-penida.webp" alt="Tree House in Nusa Penida">
+                        <div class="slide-caption">Tree House in Nusa Penida</div>
+                    </li>
+                     <li class="carousel-slide">
+                        <img src="https://balivacationreal.github.io/homepage/src/assets/broken-beach-nusa-penida.webp" alt="Broken Beach in Nusa Penida">
+                        <div class="slide-caption">Broken Beach in Nusa Penida</div>
+                    </li>
+                    <li class="carousel-slide">
+                        <img src="https://balivacationreal.github.io/homepage/src/assets/kelingking-beach-nusa-penida.webp" alt="Cliff Views at Kelingking Beach">
+                        <div class="slide-caption">Cliff Views at Kelingking Beach</div>
+                    </li>
+                    <li class="carousel-slide">
+                        <img src="https://balivacationreal.github.io/homepage/src/assets/snorkeling-mantaray.webp" alt="Snorkeling at Manta Point">
+                        <div class="slide-caption">Snorkeling at Manta Point</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <button class="carousel-btn next-btn" id="nextBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
         </div>
     </section>
     <section class="testimonials" id="reviews">
@@ -1196,7 +1390,34 @@
                     });
                 });
             }
+            // Gallery Carousel Logic
+            const track = document.getElementById('track');
+            if(track) {
+                const slides = Array.from(track.children);
+                const nextButton = document.getElementById('nextBtn');
+                const prevButton = document.getElementById('prevBtn');
+                let currentIndex = 0;
 
+                function updateCarousel() {
+                    if (slides.length > 0) {
+                        const amountToMove = slides[currentIndex].getBoundingClientRect().width;
+                        track.style.transform = `translateX(-${currentIndex * amountToMove}px)`;
+                    }
+                }
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                    updateCarousel();
+                });
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                    updateCarousel();
+                });
+
+                window.addEventListener('resize', updateCarousel);
+            }
+        });
     </script>
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/02/28/15/20260228152626-Y7SR99L0.js" defer></script>   
