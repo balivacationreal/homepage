@@ -331,6 +331,15 @@
                 height: 40px;
                 font-size: 20px;
             }
+            /* Stacks the video section on mobile */
+            .video-highlight .video-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .video-highlight .video-wrapper {
+                width: 100%;
+                padding-bottom: 56.25%; /* Restores 16:9 aspect ratio for mobile */
+            }
         }
     </style>
 </head>
@@ -361,7 +370,24 @@
         <h1>The Ultimate Guide to Nusa Penida</h1>
         <p>Pristine Beaches, Iconic Cliffs, and Underwater Wonders</p>
     </section>
-
+<section class="video-highlight" style="background-color: var(--bg-light); padding: 60px 20px;">
+        <div class="video-container" style="max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 40px;">
+            <div class="video-text" style="flex: 1;">
+                <h2 style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 15px;">Experience the Island Vibe</h2>
+                <p style="font-size: 1.1rem; color: #555; margin-bottom: 25px;">Get a glimpse of the crystal-clear waters, towering cliffs, and vibrant marine life that await you on our tours. Watch our highlights and start imagining your next adventure.</p>
+                <a href="index.html#packages" class="btn">Find Your Tour</a>
+            </div>
+            <div class="video-wrapper" style="flex: 1; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; padding-bottom: 31.25%; height: 0;">
+                <iframe 
+                src="https://www.dailymotion.com/embed/video/xa0iy38?autoplay=0" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
+                frameborder="0" 
+                allow="fullscreen" 
+                allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
     <main class="blog-container">
         <div class="blog-content">
             <p><strong>Nusa Penida</strong> is an enchanting island just a short fast-boat ride from mainland Bali. It invites you to step away from the bustling tourist hubs and immerse yourself in a world of raw, untamed natural beauty. From dramatic coastal cliffs to vibrant underwater ecosystems, this hidden gem has become a go-to destination for travelers seeking an unforgettable adventure.</p>
