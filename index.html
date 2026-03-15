@@ -1030,63 +1030,6 @@
 
         </div>
     </section>
-<section class="video-highlight">
-        <div class="video-container">
-            <div class="video-text">
-                <h2>Experience the Island Vibe</h2>
-                <p>Get a glimpse of the crystal-clear waters, towering cliffs, and vibrant marine life that await you on our tours. Watch our highlights and start imagining your next adventure.</p>
-                <a href="#packages" class="btn">Find Your Tour</a>
-            </div>
-            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; width: 100%;">
-                <iframe 
-                src="https://www.dailymotion.com/embed/video/xa0iy38?autoplay=0" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
-                frameborder="0" 
-                allow="fullscreen" 
-                allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-</section>
-<section class="gallery-section" id="gallery">
-        <h2 class="section-title">Island Adventures & Activities</h2>
-        <p style="text-align: center; color: #555; margin-bottom: 30px;">See what awaits you in Bali and Nusa Penida.</p>
-        
-        <div class="carousel-wrapper">
-            <button class="carousel-btn prev-btn" id="prevBtn">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            
-            <div class="carousel-track-container">
-                <ul class="carousel-track" id="track">
-                    <li class="carousel-slide current-slide">
-                        <img src="https://balivacationreal.github.io/homepage/src/assets/rock-atuh-beach-nusa-penida.webp" alt="Atuh Beach in Nusa Penida">
-                        <div class="slide-caption">Atuh Beach in Nusa Penida</div>
-                    </li>
-                    <li class="carousel-slide">
-                        <img src="https://balivacationreal.github.io/homepage/src/assets/tree-house-nusa-penida.webp" alt="Tree House in Nusa Penida">
-                        <div class="slide-caption">Tree House in Nusa Penida</div>
-                    </li>
-                     <li class="carousel-slide">
-                        <img src="https://balivacationreal.github.io/homepage/src/assets/broken-beach-nusa-penida.webp" alt="Broken Beach in Nusa Penida">
-                        <div class="slide-caption">Broken Beach in Nusa Penida</div>
-                    </li>
-                    <li class="carousel-slide">
-                        <img src="https://balivacationreal.github.io/homepage/src/assets/kelingking-beach-nusa-penida.webp" alt="Cliff Views at Kelingking Beach">
-                        <div class="slide-caption">Cliff Views at Kelingking Beach</div>
-                    </li>
-                    <li class="carousel-slide">
-                        <img src="https://balivacationreal.github.io/homepage/src/assets/snorkeling-mantaray.webp" alt="Snorkeling at Manta Point">
-                        <div class="slide-caption">Snorkeling at Manta Point</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <button class="carousel-btn next-btn" id="nextBtn">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-    </section>
     <section class="testimonials" id="reviews">
         <h2 class="section-title">What Our Travelers Say</h2>
         <div class="testimonials-container">
@@ -1390,34 +1333,7 @@
                     });
                 });
             }
-            // Gallery Carousel Logic
-            const track = document.getElementById('track');
-            if(track) {
-                const slides = Array.from(track.children);
-                const nextButton = document.getElementById('nextBtn');
-                const prevButton = document.getElementById('prevBtn');
-                let currentIndex = 0;
 
-                function updateCarousel() {
-                    if (slides.length > 0) {
-                        const amountToMove = slides[currentIndex].getBoundingClientRect().width;
-                        track.style.transform = `translateX(-${currentIndex * amountToMove}px)`;
-                    }
-                }
-
-                nextButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-                    updateCarousel();
-                });
-
-                prevButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-                    updateCarousel();
-                });
-
-                window.addEventListener('resize', updateCarousel);
-            }
-        });
     </script>
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/02/28/15/20260228152626-Y7SR99L0.js" defer></script>   
