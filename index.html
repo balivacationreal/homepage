@@ -197,6 +197,20 @@
     .guides-section { padding: 20px 20px 0; }
     .guides-intro { margin-bottom: 30px; }
     .guides-intro p { font-size: 1rem; padding: 0 10px; } /* The padding here prevents text from hitting the screen edge */
+   
+    /* Hero Section Mobile Optimization */
+    .hero { 
+        height: 65vh; /* Reduces the height slightly to reveal the next section */
+        min-height: 400px; /* Ensures it never gets too squished on very short screens */
+        background-position: center 30%; /* Shifts the focal point up slightly so the temple isn't cut off */
+        padding: 0 15px; 
+    }
+    
+    .hero p {
+        font-size: 1.05rem; 
+        margin-bottom: 25px; 
+        padding: 0 10px; /* Prevents the text from touching the screen edges */
+    }
 }
 
 /* Optional: Extra small screens (like older iPhones) */
