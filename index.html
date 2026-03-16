@@ -111,7 +111,10 @@
         .crew-info h3 { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 5px; }
         .crew-role { display: block; color: var(--secondary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .crew-info p { font-size: 0.95rem; color: #666; line-height: 1.6; }
-
+        /* Guides Section */
+        .guides-section { background-color: var(--bg-light); padding: 40px 50px 0; } 
+        .guides-intro { text-align: center; margin-bottom: 40px; }
+        .guides-intro p { color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
         /* Testimonials Section */
         .testimonials { padding: 40px 50px 80px; background-color: #fff; }
         .testimonials-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; margin: 0 auto; }
@@ -189,6 +192,11 @@
     /* Move them to a horizontal row, make them smaller, and push them up slightly to avoid OS navigation bars */
     .floating-buttons { bottom: 20px; left: 20px; gap: 10px; flex-direction: row; }
     .float-btn { width: 45px; height: 45px; font-size: 22px; }
+
+    /* Guides section adjustments on mobile */
+    .guides-section { padding: 20px 20px 0; }
+    .guides-intro { margin-bottom: 30px; }
+    .guides-intro p { font-size: 1rem; padding: 0 10px; } /* The padding here prevents text from hitting the screen edge */
 }
 
 /* Optional: Extra small screens (like older iPhones) */
@@ -290,10 +298,10 @@
     <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
     <div class="packages-container" id="packages-list"></div>
 
-    <section id="guides" style="background-color: var(--bg-light); padding: 80px 0;">
-        <div style="text-align: center; margin-bottom: 50px;">
+    <section class="guides-section" id="guides">
+        <div class="guides-intro">
             <h2 class="section-title">Travel Guides & Tips</h2>
-            <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Plan your perfect island adventure with insider knowledge and local insights from our expert team.</p>
+            <p>Plan your perfect island adventure with insider knowledge and local insights from our expert team.</p>
         </div>
         <div class="packages-container">
             <div class="package-card">
