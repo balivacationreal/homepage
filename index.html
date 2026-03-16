@@ -493,18 +493,46 @@
             }
         ];
 
-        async function initializeTours() {
+       async function initializeTours() {
             const container = document.getElementById('packages-list');
             container.innerHTML = '';
 
+            // 1. Check for a cached exchange rate to prevent layout shifts
+            let idrRate = localStorage.getItem('cached_idr_rate');
+            let rateTime = localStorage.getItem('cached_rate_time');
+            const now = new Date().getTime();
+            
+            // Use cached rate if it's less than 12 hours old (43,200,000 ms)
+            if (idrRate && rateTime && (now - rateTime < 43200000)) {
+                idrRate = parseFloat(idrRate);
+            } else {
+                idrRate = null; 
+            }
+
+            // 2. Build and inject the HTML synchronously
             tourPackages.forEach(pkg => {
                 const itineraryHTML = pkg.itinerary.map(item => 
                     `<li><i class="fa-solid ${pkg.icon}"></i> ${item}</li>`
                 ).join('');
 
                 let priceHTML = '<div class="tour-pricing"><ul class="price-list">';
+                
                 pkg.pricing.forEach(tier => {
-                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| Rp ${tier.defaultIdr}</span></li>`;
+                    let displayIdr = `Rp ${tier.defaultIdr}`;
+                    
+                    // If we have a cached rate, calculate it immediately BEFORE rendering
+                    if (idrRate) {
+                        const exactIdr = tier.usd * idrRate;
+                        const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
+                        displayIdr = new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(cleanIdr);
+                    }
+
+                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| ${displayIdr}</span></li>`;
                 });
                 priceHTML += '</ul><p class="per-pax-note">* Prices are per person</p></div>';
 
@@ -524,30 +552,37 @@
                 container.innerHTML += cardHTML;
             });
 
-            try {
-                const response = await fetch('https://open.er-api.com/v6/latest/USD');
-                const data = await response.json();
-                const idrRate = data.rates.IDR;
-
-                document.querySelectorAll('.idr-price').forEach(el => {
-                    const usdValue = parseFloat(el.getAttribute('data-usd'));
-                    const exactIdr = usdValue * idrRate;
-                    const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
+            // 3. If no cached rate exists, fetch it silently in the background
+            if (!idrRate) {
+                try {
+                    const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                    const data = await response.json();
+                    const newRate = data.rates.IDR;
                     
-                    const formattedIdr = new Intl.NumberFormat('id-ID', {
-                        style: 'currency',
-                        currency: 'IDR',
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0
-                    }).format(cleanIdr);
+                    // Cache it for the user's next visit or page navigation
+                    localStorage.setItem('cached_idr_rate', newRate);
+                    localStorage.setItem('cached_rate_time', now);
 
-                    el.textContent = `| ${formattedIdr}`;
-                });
-            } catch (error) {
-                console.error('Could not fetch live exchange rates. Using default static prices.', error);
+                    // Update the DOM gently this one time
+                    document.querySelectorAll('.idr-price').forEach(el => {
+                        const usdValue = parseFloat(el.getAttribute('data-usd'));
+                        const exactIdr = usdValue * newRate;
+                        const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
+                        
+                        const formattedIdr = new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR',
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        }).format(cleanIdr);
+
+                        el.textContent = `| ${formattedIdr}`;
+                    });
+                } catch (error) {
+                    console.error('Could not fetch live exchange rates.', error);
+                }
             }
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             initializeTours();
 
