@@ -155,23 +155,46 @@
             .experience-badge { right: 20px; }
         }
 
-        @media(max-width: 768px) {
-            header { padding: 15px 20px; flex-direction: row; position: relative; }
-            .mobile-menu-btn { display: block; }
-            #navMenu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px 0; }
-            #navMenu.active { display: block; }
-            nav ul { flex-direction: column; align-items: center; gap: 20px; margin: 0; }
-            .hero h1 { font-size: 2.2rem; line-height: 1.3; }
-            .section-title { font-size: 2rem; }
-            .package-card, .crew-card { width: 100%; max-width: 350px; }
-            .packages-container { padding: 0 20px 40px; gap: 20px; }
-            .about-section, .crew-section, .testimonials, .booking-section { padding: 40px 20px; }
-            .about-content h3 { font-size: 1.5rem; }
-            .form-row { flex-direction: column; gap: 20px; }
-            .booking-container { padding: 25px; }
-            .floating-buttons { bottom: 20px; left: 20px; gap: 10px; }
-            .float-btn { width: 40px; height: 40px; font-size: 20px; }
-        }
+       @media(max-width: 768px) {
+    /* 1. Fix the Header and Logo sizes */
+    header { padding: 15px 20px; flex-direction: row; position: relative; justify-content: space-between; align-items: center; }
+    .logo img { height: 35px; } 
+    .logo-text { font-size: 18px; } 
+    
+    /* Mobile Menu Logic (Keep your existing) */
+    .mobile-menu-btn { display: block; }
+    #navMenu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #fff; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 20px 0; z-index: 99; }
+    #navMenu.active { display: block; }
+    nav ul { flex-direction: column; align-items: center; gap: 20px; margin: 0; }
+    
+    /* Typography Adjustments */
+    .hero h1 { font-size: 2rem; line-height: 1.3; }
+    .section-title { font-size: 1.8rem; }
+    
+    /* Adjust Container Paddings */
+    .about-section, .crew-section, .testimonials, .booking-section { padding: 40px 20px; }
+    .packages-container { padding: 0 20px 40px; gap: 20px; }
+    .package-card, .crew-card { width: 100%; max-width: 380px; }
+    
+    /* 2. Fix the Overlapping Badge */
+    .about-image { margin-bottom: 30px; } /* Adds space so the badge doesn't hit the text */
+    .experience-badge { right: 10px; bottom: -15px; width: 90px; height: 90px; font-size: 0.8rem; padding: 10px; }
+    .about-content h3 { font-size: 1.5rem; margin-top: 15px; }
+    
+    /* Form Adjustments */
+    .form-row { flex-direction: column; gap: 20px; }
+    .booking-container { padding: 25px; }
+    
+    /* 3. Clean up the Floating Buttons */
+    /* Move them to a horizontal row, make them smaller, and push them up slightly to avoid OS navigation bars */
+    .floating-buttons { bottom: 20px; left: 20px; gap: 10px; flex-direction: row; }
+    .float-btn { width: 45px; height: 45px; font-size: 22px; }
+}
+
+/* Optional: Extra small screens (like older iPhones) */
+@media(max-width: 400px) {
+    .logo-text { display: none; } /* Hide text completely to let the logo and menu breathe */
+}
     </style>
 </head>
 <body>
