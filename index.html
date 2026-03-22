@@ -151,14 +151,53 @@
         .float-btn:hover { transform: scale(1.1); }
         .wa-btn { background-color: #25D366; }
         .tg-btn { background-color: #0088cc; }
-
-        /* Universal Responsive Rules */
-        @media(max-width: 992px) {
-            .about-container { flex-direction: column; }
-            .experience-badge { right: 20px; }
+/* Bridge Banner Section */
+        .bridge-banner {
+            background: linear-gradient(135deg, var(--primary-color), #00365a);
+            color: #fff;
+            text-align: center;
+            padding: 60px 40px;
+            margin: 0 auto 80px;
+            max-width: 1100px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 91, 150, 0.2);
         }
+        .bridge-banner h2 { 
+            color: #fff; 
+            font-size: 2.2rem; 
+            margin-bottom: 15px; 
+        }
+        .bridge-banner p { 
+            font-size: 1.1rem; 
+            margin-bottom: 30px; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            color: #e0f0ff; 
+        }
+        .bridge-banner .btn-custom { 
+            background-color: #fff; 
+            color: var(--primary-color); 
+            padding: 15px 35px; 
+            border-radius: 30px; 
+            font-weight: 700; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: all 0.3s ease; 
+        }
+        .bridge-banner .btn-custom:hover { 
+            background-color: var(--secondary-color); 
+            color: #fff; 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(255, 127, 80, 0.4); 
+        }
+    /* Universal Responsive Rules */
+    @media(max-width: 992px) {
+    .about-container { flex-direction: column; }
+    .experience-badge { right: 20px; }
+    }
 
-       @media(max-width: 768px) {
+    @media(max-width: 768px) {
     /* 1. Fix the Header and Logo sizes */
     header { padding: 15px 20px; flex-direction: row; position: relative; justify-content: space-between; align-items: center; }
     .logo img { height: 50px; } 
@@ -211,6 +250,9 @@
         margin-bottom: 25px; 
         padding: 0 10px; /* Prevents the text from touching the screen edges */
     }
+/* Bridge Banner Mobile Fix */
+    .bridge-banner { margin: 0 20px 60px; padding: 40px 20px; }
+    .bridge-banner h2 { font-size: 1.8rem; }
 }
     </style>
 </head>
@@ -229,6 +271,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#packages">Tour Packages</a></li>
+                <li><a href="/private-driver-tours.html">Private Driver</a></li>
                 <li><a href="#guides">Travel Guides</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -264,7 +307,6 @@
             </div>
         </div>
     </section>
-
     <section class="crew-section" id="crew">
         <h2 class="section-title">Meet Your Local Guides</h2>
         <p class="crew-intro">Our experienced and friendly drivers are here to ensure your journey is safe, fun, and unforgettable.</p>
@@ -303,7 +345,11 @@
             </div>
         </div>
     </section>
-
+    <div class="bridge-banner">
+        <h2>Design Your Own Island Adventure</h2>
+        <p>Don't want an all-inclusive package? Hire one of our experienced drivers for a custom transport-only tour and explore Bali completely at your own pace.</p>
+        <a href="/private-driver-tours.html" class="btn-custom">View Private Driver Options</a>
+    </div>
     <h2 class="section-title" id="packages">Our Popular Tour Packages</h2>
     <div class="packages-container" id="packages-list"></div>
 
@@ -394,6 +440,7 @@
                             <option value="Sekumpul Waterfall">Sekumpul Waterfall Tour</option>
                             <option value="North Bali Canyoning">North Bali Canyoning</option>
                             <option value="Mount Batur Sunrise Trekking">Mount Batur Sunrise Trekking</option>
+                            <option value="Private Transport (Custom Tour)">Private Transport (Custom Tour)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -423,6 +470,8 @@
             <a href="https://instagram.com/balirealvacation" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         </div>
         <div class="footer-legal">
+            <a href="/private-driver-tours.html">Private Driver Tours</a>
+            <span class="divider">|</span>
             <a href="/nusa-penida-guide.html">Nusa Penida Guide</a>
             <span class="divider">|</span>
             <a href="/bali-destinations-guide.html">Bali Area Guide</a>
