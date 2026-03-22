@@ -33,7 +33,15 @@
     <loc>https://www.balirealvacation.com/mount-batur-sunrise-trek.html</loc>
     <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://www.balirealvacation.com/private-driver-tours.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.balirealvacation.com/airport-transfers.html</loc>
+    <priority>0.8</priority>
+  </url>
+  
   <url>
     <loc>https://www.balirealvacation.com/nusa-penida-guide.html</loc>
     <priority>0.7</priority>
@@ -42,7 +50,6 @@
     <loc>https://www.balirealvacation.com/bali-destinations-guide.html</loc>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://www.balirealvacation.com/privacy.html</loc>
     <priority>0.5</priority>
