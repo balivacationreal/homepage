@@ -81,10 +81,12 @@
         .package-details li i { color: var(--primary-color); margin-right: 10px; }
         .tour-pricing { margin: 15px 0; padding: 15px; background-color: var(--bg-light); border-radius: 8px; text-align: left; }
         .price-list { list-style: none; padding: 0; margin: 0; }
-        .price-list li { font-size: 0.95rem; color: var(--text-dark); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed #ccc; padding-bottom: 4px; }
-        .price-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .price-list strong { color: var(--primary-color); font-size: 1.1rem; }
-        .idr-price { color: #666; font-size: 0.9rem; }
+        .price-list li { padding: 10px 0; border-bottom: 1px dashed #ccc; display: flex; justify-content: space-between; align-items: center; margin: 0; }
+        .price-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .tier-label { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); }
+        .price-group { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+        .usd-price { color: var(--primary-color); font-size: 1.15rem; font-weight: 700; line-height: 1.1; margin-bottom: 4px; }
+        .idr-price { color: #555; font-size: 0.8rem; font-weight: 600; line-height: 1; }
         .per-pax-note { font-size: 0.8rem; color: #888; margin-top: 10px; text-align: center; font-style: italic; }
 
         /* About Us Section - Fixed Layout */
@@ -591,13 +593,11 @@
             const container = document.getElementById('packages-list');
             container.innerHTML = '';
 
-            // 1. Check for a cached exchange rate to prevent layout shifts
             let idrRate = localStorage.getItem('cached_idr_rate');
             let audRate = localStorage.getItem('cached_aud_rate');
             let rateTime = localStorage.getItem('cached_rate_time');
             const now = new Date().getTime();
             
-            // Use cached rate if it's less than 12 hours old (43,200,000 ms)
             if (idrRate && audRate && rateTime && (now - rateTime < 43200000)) {
                 idrRate = parseFloat(idrRate);
                 audRate = parseFloat(audRate);
@@ -606,7 +606,6 @@
                 audRate = null;
             }
 
-            // 2. Build and inject the HTML synchronously
             tourPackages.forEach(pkg => {
                 const itineraryHTML = pkg.itinerary.map(item => 
                     `<li><i class="fa-solid ${pkg.icon}"></i> ${item}</li>`
@@ -618,7 +617,6 @@
                     let displayIdr = `Rp ${tier.defaultIdr}`;
                     let displayAud = ''; 
                     
-                    // If we have a cached rate, calculate it immediately BEFORE rendering
                     if (idrRate && audRate) {
                         const exactIdr = tier.usd * idrRate;
                         const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
@@ -629,12 +627,19 @@
                             maximumFractionDigits: 0
                         }).format(cleanIdr);
 
-                        // Calculate AUD
                         const audValue = Math.round(tier.usd * audRate);
-                        displayAud = ` <span style="color:#777; font-size:0.85rem; font-weight:600;">| ~$${audValue} AUD</span>`;
+                        displayAud = ` <span style="color:#888; font-weight:normal;">| ~$${audValue} AUD</span>`;
                     }
 
-                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| ${displayIdr}${displayAud}</span></li>`;
+                    // NEW STRUCTURE: Grouping prices together on the right
+                    priceHTML += `
+                    <li>
+                        <span class="tier-label">${tier.label}</span> 
+                        <div class="price-group">
+                            <strong class="usd-price">$${tier.usd}</strong> 
+                            <span class="idr-price" data-usd="${tier.usd}">${displayIdr}${displayAud}</span>
+                        </div>
+                    </li>`;
                 });
                 priceHTML += '</ul><p class="per-pax-note">* Prices are per person</p></div>';
 
@@ -654,7 +659,6 @@
                 container.innerHTML += cardHTML;
             });
 
-            // 3. If no cached rate exists, fetch it silently in the background
             if (!idrRate || !audRate) {
                 try {
                     const response = await fetch('https://open.er-api.com/v6/latest/USD');
@@ -662,16 +666,13 @@
                     const newIdrRate = data.rates.IDR;
                     const newAudRate = data.rates.AUD;
                     
-                    // Cache it for the user's next visit or page navigation
                     localStorage.setItem('cached_idr_rate', newIdrRate);
                     localStorage.setItem('cached_aud_rate', newAudRate);
                     localStorage.setItem('cached_rate_time', now);
 
-                    // Update the DOM gently this one time
                     document.querySelectorAll('.idr-price').forEach(el => {
                         const usdValue = parseFloat(el.getAttribute('data-usd'));
                         
-                        // IDR Formatting
                         const exactIdr = usdValue * newIdrRate;
                         const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
                         const formattedIdr = new Intl.NumberFormat('id-ID', {
@@ -681,12 +682,10 @@
                             maximumFractionDigits: 0
                         }).format(cleanIdr);
 
-                        // AUD Formatting
                         const audValue = Math.round(usdValue * newAudRate);
-                        const formattedAud = ` <span style="color:#777; font-size:0.85rem; font-weight:600;">| ~$${audValue} AUD</span>`;
+                        const formattedAud = ` <span style="color:#888; font-weight:normal;">| ~$${audValue} AUD</span>`;
 
-                        // Use innerHTML instead of textContent to render the span tag properly
-                        el.innerHTML = `| ${formattedIdr}${formattedAud}`;
+                        el.innerHTML = `${formattedIdr}${formattedAud}`;
                     });
                 } catch (error) {
                     console.error('Could not fetch live exchange rates.', error);
