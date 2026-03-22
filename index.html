@@ -60,7 +60,7 @@
         .mobile-menu-btn:hover { color: var(--secondary-color); }
         
         /* Hero Section */
-        .hero { height: 80vh; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/ulun-danu-beratan-temple-stunning-view.webp') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--text-light); padding: 0 20px; }
+        .hero{height: 80vh;background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('src/assets/ulun-danu-beratan-temple-stunning-view.webp'); background-size: cover; background-position: center 15%; display: flex;flex-direction: column; justify-content: center; align-items: center; text-align: center;color: var(--text-light);padding: 0 20px; }
         .hero h1 { font-size: 3rem; margin-bottom: 20px; }
         .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; }
         .btn { padding: 12px 30px; background-color: var(--secondary-color); color: #fff; text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 1.1rem; transition: background 0.3s; border: none; cursor: pointer; }
@@ -593,14 +593,17 @@
 
             // 1. Check for a cached exchange rate to prevent layout shifts
             let idrRate = localStorage.getItem('cached_idr_rate');
+            let audRate = localStorage.getItem('cached_aud_rate');
             let rateTime = localStorage.getItem('cached_rate_time');
             const now = new Date().getTime();
             
             // Use cached rate if it's less than 12 hours old (43,200,000 ms)
-            if (idrRate && rateTime && (now - rateTime < 43200000)) {
+            if (idrRate && audRate && rateTime && (now - rateTime < 43200000)) {
                 idrRate = parseFloat(idrRate);
+                audRate = parseFloat(audRate);
             } else {
                 idrRate = null; 
+                audRate = null;
             }
 
             // 2. Build and inject the HTML synchronously
@@ -613,9 +616,10 @@
                 
                 pkg.pricing.forEach(tier => {
                     let displayIdr = `Rp ${tier.defaultIdr}`;
+                    let displayAud = ''; 
                     
                     // If we have a cached rate, calculate it immediately BEFORE rendering
-                    if (idrRate) {
+                    if (idrRate && audRate) {
                         const exactIdr = tier.usd * idrRate;
                         const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
                         displayIdr = new Intl.NumberFormat('id-ID', {
@@ -624,9 +628,13 @@
                             minimumFractionDigits: 0,
                             maximumFractionDigits: 0
                         }).format(cleanIdr);
+
+                        // Calculate AUD
+                        const audValue = Math.round(tier.usd * audRate);
+                        displayAud = ` <span style="color:#777; font-size:0.85rem; font-weight:600;">| ~$${audValue} AUD</span>`;
                     }
 
-                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| ${displayIdr}</span></li>`;
+                    priceHTML += `<li>${tier.label}: <strong>$${tier.usd}</strong> <span class="idr-price" data-usd="${tier.usd}">| ${displayIdr}${displayAud}</span></li>`;
                 });
                 priceHTML += '</ul><p class="per-pax-note">* Prices are per person</p></div>';
 
@@ -647,22 +655,25 @@
             });
 
             // 3. If no cached rate exists, fetch it silently in the background
-            if (!idrRate) {
+            if (!idrRate || !audRate) {
                 try {
                     const response = await fetch('https://open.er-api.com/v6/latest/USD');
                     const data = await response.json();
-                    const newRate = data.rates.IDR;
+                    const newIdrRate = data.rates.IDR;
+                    const newAudRate = data.rates.AUD;
                     
                     // Cache it for the user's next visit or page navigation
-                    localStorage.setItem('cached_idr_rate', newRate);
+                    localStorage.setItem('cached_idr_rate', newIdrRate);
+                    localStorage.setItem('cached_aud_rate', newAudRate);
                     localStorage.setItem('cached_rate_time', now);
 
                     // Update the DOM gently this one time
                     document.querySelectorAll('.idr-price').forEach(el => {
                         const usdValue = parseFloat(el.getAttribute('data-usd'));
-                        const exactIdr = usdValue * newRate;
-                        const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
                         
+                        // IDR Formatting
+                        const exactIdr = usdValue * newIdrRate;
+                        const cleanIdr = Math.ceil(exactIdr / 10000) * 10000;
                         const formattedIdr = new Intl.NumberFormat('id-ID', {
                             style: 'currency',
                             currency: 'IDR',
@@ -670,7 +681,12 @@
                             maximumFractionDigits: 0
                         }).format(cleanIdr);
 
-                        el.textContent = `| ${formattedIdr}`;
+                        // AUD Formatting
+                        const audValue = Math.round(usdValue * newAudRate);
+                        const formattedAud = ` <span style="color:#777; font-size:0.85rem; font-weight:600;">| ~$${audValue} AUD</span>`;
+
+                        // Use innerHTML instead of textContent to render the span tag properly
+                        el.innerHTML = `| ${formattedIdr}${formattedAud}`;
                     });
                 } catch (error) {
                     console.error('Could not fetch live exchange rates.', error);
