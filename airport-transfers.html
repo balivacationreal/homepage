@@ -12,7 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Bali Airport Transfer Service | Bali Real Vacation">
     <meta name="description" content="Reliable, private airport transfers from Ngurah Rai International Airport (DPS) to your hotel in Bali. Cold drinks included. Book your ride today!">
-    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.balirealvacation.com/airport-transfers.html">
+    <meta property="og:title" content="Bali Airport Transfer Service | Bali Real Vacation">
+    <meta property="og:description" content="Reliable, private airport transfers from Ngurah Rai International Airport (DPS) to your hotel in Bali. Cold drinks included. Book your ride today!">
+    <meta property="og:image" content="https://www.balirealvacation.com/src/assets/ketut-waiting.webp">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.balirealvacation.com/airport-transfers.html">
+    <meta property="twitter:title" content="Bali Airport Transfer Service | Bali Real Vacation">
+    <meta property="twitter:description" content="Reliable, private airport transfers from Ngurah Rai International Airport (DPS) to your hotel in Bali. Cold drinks included. Book your ride today!">
+    <meta property="twitter:image" content="https://www.balirealvacation.com/src/assets/ketut-waiting.webp">
     <title>Bali Airport Transfer Service | Bali Real Vacation</title>
     <link rel="icon" type="image/webp" href="src/assets/bali-real-vacation-logo.webp">
     
@@ -238,6 +248,15 @@
         ];
 
         document.addEventListener('DOMContentLoaded', async () => {
+            // Prevent users from selecting past dates in the booking form
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const dd = String(today.getDate()).padStart(2, '0');
+                dateInput.min = `${yyyy}-${mm}-${dd}`;
+            }
             // Mobile Menu
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navMenu = document.getElementById('navMenu');
